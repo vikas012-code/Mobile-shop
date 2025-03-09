@@ -1,14 +1,34 @@
-import { useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import Similar from "./Similar"
 import Datas from "./datas";
 import { useParams } from "react-router-dom";
+import { UserContext } from "./context";
 
 function Product(){
+    const {cartItem ,setCartItem,cartQuantity,setCartQuantity}=useContext(UserContext);
+    const [quantity,setQuantity]=useState(0)
     let {id} = useParams()
-    console.log(id)
 
     let value = Datas.filter((value)=> value.id==id)
     let Data=value[0]
+
+    function addData(){
+        if(cartItem.length > 0){
+            for(let i=0;i<cartItem.length;i++){
+                if(cartItem[i].Data.id===Data.id){
+                    cartItem[i].quantity+=quantity
+                    return
+                }
+            }
+            setCartItem([...cartItem, {Data,quantity}])
+        } 
+        else{
+            setCartItem([...cartItem, {Data,quantity}]) 
+
+        }
+
+        
+    }
     return(
         <>
         {
@@ -37,16 +57,38 @@ function Product(){
 
                         <div className=" m-4  justify-between items-center"> 
                             <div className="flex justify-between items-center">
-                                <p className="text-lg font-bold">$ {Data.price*60}</p>
+                                <p className="text-lg font-bold">$ {Data.price}</p>
                                 <p>discout {Data.discount}%</p> 
                             </div>
-                            {Data.discount &&    <p className=" text-sm text-gray-400  line-through">$ {(Data.price*60)+((Data.price*60)*Data.discount/100)}</p>
+                            {Data.discount && <p className=" text-sm text-gray-400  line-through">$ {(Data.price)+((Data.price)*Data.discount/100)}</p>
                         }
                         </div>
 
-                        <div className="flex flex-col mt-10 px-4">
+                        <div className="flex gap-2 justify-center items-center">
+                            <button className="border border-gray-400 w-8 h-8 rounded-full flex justify-center items-center" onClick={()=>{
+                                quantity > 0 && setQuantity(quantity-1)
+                            }}>
+                                -
+                            </button>
+                            <p>
+                                {quantity}
+                            </p>
+                            <button className="border border-gray-400 w-8 h-8 rounded-full" onClick={()=>{
+                                setQuantity(quantity+1)
+                            }}>
+                                +
+                            </button>
+
+                        </div>
+
+                        <div className="flex flex-col mt-2 px-4">
                             <button className=" border rounded-lg bg-blue-600 text-white h-10 my-2 hover:bg-white hover:text-blue-600 hover:scale-105 duration-300">Buy Now</button>
-                            <button className=" border rounded-lg bg-white text-blue-600 h-10 my-2 hover:scale-105 duration-300">Add to cart</button>
+                            <button className=" border rounded-lg bg-white text-blue-600 h-10 my-2 hover:scale-105 duration-300" onClick={()=>
+                            {
+                            quantity > 0 ? setCartQuantity(cartQuantity+quantity) || addData():"";
+                             setQuantity(0)   
+                            }}
+                            >Add to cart</button>
                         </div>
 
                     </div>

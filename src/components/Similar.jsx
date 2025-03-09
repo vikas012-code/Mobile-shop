@@ -30,7 +30,6 @@ function Category({props}){
 
 
     let filterData = Datas?.filter((data)=> (data.category).toLowerCase().includes(search.toLocaleLowerCase()))
-    console.log(filterData)
     return (<>
 
         <main>
