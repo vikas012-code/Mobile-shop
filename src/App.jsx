@@ -9,9 +9,12 @@ import { useState } from "react"
 
 function App() {
   const [searchItem,setSearchItem]= useState("")
+  const [cartItem ,setCartItem]=useState([])
+  const [cartQuantity,setCartQuantity]=useState(0)
+  
   
   return (
-    <UserContext.Provider value={{searchItem,setSearchItem}}>
+    <UserContext.Provider value={{searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity}}>
     <Navbar/>
     <Outlet/>
     {/* <Product props={Datas[30]}/> */}

@@ -6,6 +6,7 @@ import Product from './components/product.jsx'
 import Body from './components/Body.jsx'
 import Category from './components/Category.jsx'
 import HeroPage from './components/HeroPage.jsx'
+import Cart from './components/Cart.jsx';
 
 const Router = createBrowserRouter([
   {
@@ -33,6 +34,10 @@ const Router = createBrowserRouter([
       {
         path :"/product/:id",
         element :<Product/>
+      },
+      {
+        path :"/Cart",
+        element :<Cart/>
       }
     ]
   }
