@@ -7,6 +7,7 @@ import Body from './components/Body.jsx'
 import Category from './components/Category.jsx'
 import HeroPage from './components/HeroPage.jsx'
 import Cart from './components/Cart.jsx';
+import CheckOut from './components/CheckOut.jsx';
 
 const Router = createBrowserRouter([
   {
@@ -15,7 +16,8 @@ const Router = createBrowserRouter([
     children : [
       {
        path : "/" ,
-       element : <>
+       element : 
+       <>
         <HeroPage/>
         <Category props={"mobile"}/>
         <Category props={"TV"}/>
@@ -28,7 +30,7 @@ const Router = createBrowserRouter([
         element : <Body/>
       },
       {
-        path :"/body/:id",
+        path :"/body/:category",
         element : <Body/>
       },
       {
@@ -36,8 +38,12 @@ const Router = createBrowserRouter([
         element :<Product/>
       },
       {
-        path :"/Cart",
+        path :"/cart",
         element :<Cart/>
+      },
+      {
+        path :"/checkout",
+        element :<CheckOut/>
       }
     ]
   }

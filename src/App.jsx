@@ -5,6 +5,7 @@ import Footer from "./components/Footer"
 import { Outlet } from "react-router-dom"
 import { UserContext } from "./components/context"
 import { useState } from "react"
+import CheckOut from "./components/CheckOut"
 
 
 function App() {

@@ -14,7 +14,7 @@ function Navbar() {
 
     return (
       <>
-      <nav className=" bg-white h-20 flex justify-evenly items-center drop-shadow-lg">
+      <nav className="w-[100vw] bg-white h-20 flex justify-evenly items-center drop-shadow-lg fixed top-0 z-50">
         <div className=" flex justify-center items-center">
             <a className=" flex justify-center items-center gap-2" href="/"> 
                 <img className="w-16 h-16" src={smartphone} alt="mobileshop"/> 
@@ -44,9 +44,10 @@ function Navbar() {
 
         <ul className="flex gap-10 justify-center items-center">
             <li><a className="flex justify-center items-center gap-3 hover:text-blue-500 hover:scale-110 duration-300" href="#"><img className="w-6 h-6" src={account_icon} alt="accont" /> <p>Account</p></a></li>
-            <li><Link className="flex justify-center items-center gap-3 hover:text-blue-500 hover:scale-110 duration-300" to="/Cart"><img className="w-6 h-6" src={cart_icon} alt="cart" /> <p>Cart{cartQuantity>0 &&`(${cartQuantity})`}</p></Link></li>
+            <li><Link className="flex justify-center items-center gap-3 hover:text-blue-500 hover:scale-110 duration-300" to="/cart"><img className="w-6 h-6" src={cart_icon} alt="cart" /> <p>Cart{cartQuantity>0 &&`(${cartQuantity})`}</p></Link></li>
         </ul>
       </nav>
+      <div className="mt-20"></div>
       </> 
     )
   }
