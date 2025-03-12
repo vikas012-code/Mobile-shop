@@ -3,7 +3,7 @@ import account_icon from "../assets/account_icon.png";
 import cart_icon from "../assets/cart_icon.png";
 import search_icon from "../assets/search_icon.png";
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, redirect, useNavigate } from "react-router-dom";
 import { UserContext } from "./context.js";
 
 
@@ -11,6 +11,12 @@ import { UserContext } from "./context.js";
 
 function Navbar() {
     const {searchItem,setSearchItem,cartQuantity}=useContext(UserContext);
+    const navigate=useNavigate()
+
+    const handleSubmit=(e)=>{
+        e.preventDefault()
+        navigate("/body")
+    }
 
     return (
       <>
@@ -34,11 +40,11 @@ function Navbar() {
         </ul>
 
         <div className="flex justify-center items-center">
-            <input className=" border h-10 rounded-3xl w-80 focus:border-cyan-600 focus:border-2 focus:outline-hidden p-3 focus:scale-110 duration-300 peer border-gray-400" type="text" placeholder="Search . . . ." value={searchItem} onChange={(e)=>{
-                e.preventDefault()
-                setSearchItem(e.target.value)
-                
-            }} />
+            <form onSubmit={handleSubmit}>
+                <input className=" border h-10 rounded-3xl w-80 focus:border-cyan-600 focus:border-2 focus:outline-hidden p-3 focus:scale-110 duration-300 peer border-gray-400" type="text" placeholder="Search . . . ." value={searchItem} onChange={(e)=>{
+                    setSearchItem(e.target.value)
+                }} />
+            </form>
             <img className=" h-6 relative right-10 peer-focus:invisible  duration-100 ease-in-out" src={search_icon} alt="search" />
         </div>
 
