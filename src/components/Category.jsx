@@ -4,18 +4,15 @@ import datas from "./datas.js"
 import { Link } from "react-router-dom";
 
 function Category({props}){
-    const [search,setSearch]=useState("")
-    props?" ":props=" ";
-    useEffect(()=>{
-        setSearch(props)
-    },[props])
+   
+
+    const [bestOf,setBestOf]=useState("")
+
     
-    const [Datas, setDatas]=useState([])
 
     useEffect(()=>{
-        setDatas(datas)
-    },[])
-
+        props? setBestOf(props):setBestOf(" ");
+    },[props])
 
 
     function truncateString(str, maxLength) {
@@ -24,22 +21,15 @@ function Category({props}){
         }
         return str;
     }
-    
-    // useEffect(()=>{
-    //     fetch("https://fakestoreapi.in/api/products")
-    //     .then(res => res.json())
-    //     .then(res => setDatas(res.products))
-    //     .catch((err)=> console.log("Error..",err))
-    // },[])
 
 
-    let filterData = Datas?.filter((data)=> (data.category).toLowerCase().includes(search.toLocaleLowerCase()))
+    let filterData = datas?.filter((data)=> data.category.toLowerCase().includes(bestOf.toLowerCase()))
 
     return (<>
 
         <main className=" bg-cyan-50">
             <p  className=" flex justify-center text-3xl pt-4 font-bold text-cyan-800">
-                BEST {search.toUpperCase()}
+                BEST {bestOf.toUpperCase()}
             </p>
             <div className="flex overflow-x-scroll">
 

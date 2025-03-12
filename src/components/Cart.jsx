@@ -6,10 +6,8 @@ function Cart(){
     const {cartItem ,setCartItem}=useContext(UserContext);    
     return(
         <>
-        <div className="bg-white">
-            <section className="min-h-[50vh]">
+        <div className="bg-white min-h-[50vh]">
             <CardOfShoopingCart items={cartItem} />
-            </section>
         </div>
         </>
     )

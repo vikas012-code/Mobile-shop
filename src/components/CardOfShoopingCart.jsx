@@ -1,14 +1,28 @@
 import Datas from "./datas";
 import "../index.css"
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "./context";
 
 export default function CardOfShoopingCart({items}){
     // items.push({Data:Datas[0],quantity:2})
+     const {cartQuantity,setCartQuantity}=useContext(UserContext);
+
+    // const []=useState(0)
+    // console.log(cartQuantity)
+
+
+    // let total=0
+    const [total,setTotal]=useState(0)
     
-    let total=0
+    let totalItem=0;
 
     items?.map((item)=>{
-        total=total+item.quantity*item?.Data.price;
+        totalItem=totalItem+item.quantity*item?.Data.price;
     })
+
+    useEffect(()=>{
+        setTotal(totalItem)
+    },[totalItem])
 
     return(
         <>
@@ -28,18 +42,22 @@ export default function CardOfShoopingCart({items}){
                     </p>
                 </div>
                 <hr className="border-b-2 border-black" />
-        {
-        items?.map((item)=>(
+        {items.map((item)=>( item.quantity >0? 
         <div className="" key={item?.Data.id}>
         <ul className="flex justify-between p-2 ">
             <li><img className="min-w-20 h-20" src={item?.Data.image} alt="" /></li>
             <li className="pt-2 w-220 overflow-clip text-nowrap mr-120">{item?.Data.title}</li>
             <li className="absolute right-[24vw] pt-2 flex items-center"><img className="h-4 mt-0.5" src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>{item?.Data.price}</li>
-            <li className="absolute right-[18vw] pt-2 flex items-center">{item?.quantity}</li>
+
+            <li className="absolute right-[18vw] pt-2 flex items-center">
+                <button className="border border-gray-400 w-5 h-5 rounded-full flex justify-center items-center mr-1" onClick={()=>{ item.quantity-=1 ; setCartQuantity(item.quantity) }}>-</button> 
+                {item.quantity} 
+                <button className="border border-gray-400 w-5 h-5 rounded-full flex justify-center items-center ml-1" onClick={()=>{item.quantity+=1;setCartQuantity(item.quantity) }}>+</button>
+            </li>
             <li className="absolute right-[4vw] pt-2 flex items-center"><img className="h-4 mt-0.5" src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>{item?.quantity*item?.Data.price}</li>
         </ul>
         <hr className="border-b-1 border-gray-400"/>
-        </div>)
+        </div>:"")
         )
         }
         <div className="flex justify-between ml-2">

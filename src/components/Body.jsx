@@ -7,7 +7,7 @@ import { UserContext } from "./context.js";
 
 function Body(){
 
-    let {id} = useParams()
+    let {category} = useParams()
 
     const {searchItem}=useContext(UserContext);
 
@@ -26,8 +26,7 @@ function Body(){
     }
     
 
-    let filterData = Datas?.filter((data)=> id? data.category.includes(id) : (data.title).toLowerCase().includes(searchItem.toLowerCase()))
-
+    let filterData = Datas?.filter((data)=> category? data.category.includes(category) : (data.title).toLowerCase().includes(searchItem.toLowerCase()))
     return (<>
 
         <main className="flex flex-wrap justify-center bg-cyan-50">

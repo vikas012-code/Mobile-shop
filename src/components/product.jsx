@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Similar from "./Similar"
 import Datas from "./datas";
 import { useParams } from "react-router-dom";
@@ -107,6 +107,7 @@ function Product(){
             <div>
                 <p className="text-lg font-bold">Similar Products -</p>
                 <hr className="mt-5 text-gray-400" />
+                
                 <Similar props={Data}/>
             </div>
             
