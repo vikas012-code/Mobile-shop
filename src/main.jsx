@@ -8,6 +8,9 @@ import Category from './components/Category.jsx'
 import HeroPage from './components/HeroPage.jsx'
 import Cart from './components/Cart.jsx';
 import CheckOut from './components/CheckOut.jsx';
+import ShippingDetails from './components/ShippingDetails.jsx';
+import PaymentDetails from './components/PaymentDetails.jsx';
+import OrderedPlaced from './components/OrderPlaced.jsx';
 
 const Router = createBrowserRouter([
   {
@@ -43,7 +46,21 @@ const Router = createBrowserRouter([
       },
       {
         path :"/checkout",
-        element :<CheckOut/>
+        element :<CheckOut/>,
+        children:[
+          {
+            path:"/checkout",
+            element:<ShippingDetails/>
+          },
+          {
+            path:"/checkout/PaymentDetails",
+            element:<PaymentDetails/>
+          },
+          {
+            path:"/checkout/OrderedPlaced",
+            element:<OrderedPlaced/>
+          }
+        ]
       }
     ]
   }
