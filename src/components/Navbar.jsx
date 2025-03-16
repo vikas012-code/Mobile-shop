@@ -2,8 +2,8 @@ import smartphone from "../assets/smartphone.png";
 import account_icon from "../assets/account_icon.png";
 import cart_icon from "../assets/cart_icon.png";
 import search_icon from "../assets/search_icon.png";
-import { useContext, useEffect, useState } from "react";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { useContext, } from "react";
+import { Link,useNavigate } from "react-router-dom";
 import { UserContext } from "./context.js";
 
 
@@ -22,9 +22,9 @@ function Navbar() {
       <>
       <nav className="w-[100vw] bg-white h-20 flex justify-evenly items-center drop-shadow-lg fixed top-0 z-50">
         <div className=" flex justify-center items-center">
-            <a className=" flex justify-center items-center gap-2" href="/"> 
-                <img className="w-16 h-16" src={smartphone} alt="mobileshop"/> 
-                <h3 className="text-3xl font-extrabold text-blue-600">mobileshop</h3>
+            <a className=" flex justify-center items-center gap-2 hover:scale-105 duration-300" href="/"> 
+                <img className="w-16 h-16 " src={smartphone} alt="mobileshop"/> 
+                <h3 className="text-3xl font-extrabold text-blue-600 ">mobileshop</h3>
             </a>
             
         </div>
@@ -39,13 +39,13 @@ function Navbar() {
             <li className="flex items-center hover:text-blue-500 hover:scale-110 duration-300" ><Link to="body">What's new</Link></li>
         </ul>
 
-        <div className="flex justify-center items-center">
-            <form onSubmit={handleSubmit}>
-                <input className=" border h-10 rounded-3xl w-80 focus:border-cyan-600 focus:border-2 focus:outline-hidden p-3 focus:scale-110 duration-300 peer border-gray-400" type="text" placeholder="Search . . . ." value={searchItem} onChange={(e)=>{
+        <div >
+            <form className="flex justify-center items-center" onSubmit={handleSubmit}>
+                <input className=" border h-10 rounded-3xl w-80 focus:border-cyan-600 focus:border-2 focus:outline-hidden p-3 focus:scale-110 duration-300 border-gray-400 peer" type="text" placeholder="Search . . . ." value={searchItem} onChange={(e)=>{
                     setSearchItem(e.target.value)
                 }} />
+                <img className=" h-6 relative right-10 peer-focus:invisible  duration-100 ease-in-out" src={search_icon} alt="search" />
             </form>
-            <img className=" h-6 relative right-10 peer-focus:invisible  duration-100 ease-in-out" src={search_icon} alt="search" />
         </div>
 
         <ul className="flex gap-10 justify-center items-center">

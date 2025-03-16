@@ -1,10 +1,12 @@
 import { useContext, useState } from "react";
 import Similar from "./Similar"
 import Datas from "./datas";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "./context";
 
 function Product(){
+    const navigate=useNavigate()
+    
     const {cartItem ,setCartItem,cartQuantity,setCartQuantity}=useContext(UserContext);
     const [quantity,setQuantity]=useState(0)
     let {id} = useParams()
@@ -58,10 +60,9 @@ function Product(){
                         <div className=" m-4  justify-between items-center"> 
                             <div className="flex justify-between items-center">
                                 <p className="text-lg font-bold">$ {Data.price}</p>
-                                <p>discout {Data.discount}%</p> 
+                                <p className="text-green-400">({Data.discount}%off)</p> 
                             </div>
-                            {Data.discount && <p className=" text-sm text-gray-400  line-through">$ {(Data.price)+((Data.price)*Data.discount/100)}</p>
-                        }
+                            {Data.discount && <p className=" text-sm text-gray-400  line-through">$ {(Data.price)+((Data.price)*Data.discount/100)}</p>}
                         </div>
 
                         <div className="flex gap-2 justify-center items-center">
@@ -82,7 +83,14 @@ function Product(){
                         </div>
 
                         <div className="flex flex-col mt-2 px-4">
-                            <button className=" border rounded-lg bg-blue-600 text-white h-10 my-2 hover:bg-white hover:text-blue-600 hover:scale-105 duration-300">Buy Now</button>
+                            <button className=" border rounded-lg bg-blue-600 text-white h-10 my-2 hover:bg-white hover:text-blue-600 hover:scale-105 duration-300"  onClick={()=>
+                            {
+                            quantity > 0 ?setCartQuantity(cartQuantity+quantity) || addData():"";
+                             setQuantity(0)
+                             navigate("/checkout")
+
+
+                            }}>Buy Now</button>
                             <button className=" border rounded-lg bg-white text-blue-600 h-10 my-2 hover:scale-105 duration-300" onClick={()=>
                             {
                             quantity > 0 ? setCartQuantity(cartQuantity+quantity) || addData():"";
