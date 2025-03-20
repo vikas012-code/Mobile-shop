@@ -61,13 +61,18 @@ export default function CardOfShoopingCart({items}){
         </div>:"")
         )
         }
-        <div className="flex justify-between ml-2">
+        {
+            total>0 &&
+            <>
+            <div className="flex justify-between ml-2">
             <p className="text-xl font-bold ml-2">Grand Total</p>
             <p className="mr-[4vw] flex"><img className="h-4 mt-0.5" src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>{total?total:""}</p>
         </div>
         <div className="flex justify-end mt-5 ">
             {cartQuantity>0 && <Link to="/checkout" className="mr-2 bg-blue-600 text-white p-2  rounded-md hover:text-blue-600 hover:bg-white hover:scale-105 hover:border duration-300">Processed To Checkout</Link> }
         </div>
+            </>
+        }
         </>
     )
 }
