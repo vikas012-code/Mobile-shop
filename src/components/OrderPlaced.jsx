@@ -1,13 +1,14 @@
 import { useContext } from "react"
 import { UserContext } from "./context"
+import OrderPlace from "../assets/OrderPlace.gif"
 
 function OrderedPlaced(){
-        let {ShippingAddress,setShippingAddress,ProgressBar,setProgressBar}=useContext(UserContext)
+        let {ProgressBar,setProgressBar}=useContext(UserContext)
     
     setProgressBar(ProgressBar=4)
     return<>
     <div className="flex justify-center p-10">
-        <img src="https://cdn.dribbble.com/userupload/34800497/file/original-b6e227fd6ebeb78357165fde4f29d0ae.gif" alt="" />
+        <img src={OrderPlace} alt="" />
 
     </div>
     </>

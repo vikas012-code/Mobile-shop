@@ -5,6 +5,7 @@ import Footer from "./components/Footer"
 import { Outlet } from "react-router-dom"
 import { UserContext } from "./components/context"
 import { useState } from "react"
+import LoginPage from "./components/LoginPage"
 
 
 
@@ -19,13 +20,13 @@ function App() {
 
   const [ShippingAddress,setShippingAddress]=useState({
     fullName:"vikas",
-    StreetAddress:"555 new jawahar jalandhar",
+    StreetAddress:"524 new jawahar nagar",
     Floor:"",
     State:"punjab",
     City:"jalandhar",
-    Pincode:111,
+    Pincode:1144,
     Email:"vikas@gmail.com",
-    PhoneNumber:999,
+    PhoneNumber:778899,
 })
 let [ProgressBar,setProgressBar]=useState(1)
 

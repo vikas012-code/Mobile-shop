@@ -11,6 +11,7 @@ import CheckOut from './components/CheckOut.jsx';
 import ShippingDetails from './components/ShippingDetails.jsx';
 import PaymentDetails from './components/PaymentDetails.jsx';
 import OrderedPlaced from './components/OrderPlaced.jsx';
+import LoginPage from './components/LoginPage.jsx';
 
 const Router = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const Router = createBrowserRouter([
        path : "/" ,
        element : 
        <>
+        <LoginPage/>
         <HeroPage/>
         <Category props={"mobile"}/>
         <Category props={"TV"}/>

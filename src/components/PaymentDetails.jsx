@@ -26,32 +26,32 @@ function PaymentDetails(){
                     }}>
                 <div className="  shadow-lg shadow-gray-500 w-[60vw] h-[60vw] flex p-5 justify-between rounded-xl mb-5">
 
-                    <div className="border w-[48%] border-gray-300 rounded-lg p-5 flex flex-col items-center">
+                    <div className="border w-[48%] border-gray-300 rounded-lg p-5 flex flex-col items-center ">
                         <p className="text-2xl font-bold">Payment Type</p>
                         <hr className="w-[80%] justify-self-center text-gray-400" />
-                        <div className=" self-start ml-10 mt-5 flex flex-col w-[80%]">
+                        <div className=" mt-5 flex flex-col w-[80%] items-center">
                             <div className="border border-gray-300 p-5 w-[100%] flex gap-2  items-center justify-between">
-                                <input  type="radio" name="CashOnDelivery" required/>
+                                <input  type="radio" name="payment" required/>
                                 <label htmlFor="">Cash On Delivery</label>
-                                <img className="w-10 ml-10" src="https://cdn.iconscout.com/icon/free/png-256/free-cash-on-delivery-icon-download-in-svg-png-gif-file-formats--payment-hand-food-services-pack-icons-1569374.png" alt="cashonedelivery" />
+                                <img className="w-10" src="https://cdn.iconscout.com/icon/free/png-256/free-cash-on-delivery-icon-download-in-svg-png-gif-file-formats--payment-hand-food-services-pack-icons-1569374.png" alt="cashonedelivery" />
 
                             </div>
                             <div className="border border-gray-300 p-5 w-[100%] flex gap-2 items-center justify-between">
-                                <input type="radio" name="Onlinebanking" />
+                                <input type="radio" name="payment" />
                                 <label htmlFor="">Online Banking</label>
-                                <img className="w-10 ml-13" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK5ZT_94d9ZrYMaqT-sUqDpVcsN9pciTfz7g&s" alt="cashonedelivery" />
+                                <img className="w-10 " src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK5ZT_94d9ZrYMaqT-sUqDpVcsN9pciTfz7g&s" alt="cashonedelivery" />
 
                             </div>
                             <div className="border border-gray-300 p-5 w-[100%] flex gap-2  items-center justify-between">
-                                <input type="radio" name="CreditCard" />
+                                <input type="radio" name="payment" />
                                 <label htmlFor="">Credit/Debit card</label>
-                                <img className="w-10 ml-10" src="https://cdn0.iconfinder.com/data/icons/major-credit-cards-colored/48/JD-15-512.png" alt="cashonedelivery" />
+                                <img className="w-10 " src="https://cdn0.iconfinder.com/data/icons/major-credit-cards-colored/48/JD-15-512.png" alt="cashonedelivery" />
 
                             </div>
-                            <div className="border border-gray-300 p-5 w-[100%] flex gap-2  items-center justify-between">
-                                <input type="radio" name="UPI" />
-                                <label htmlFor="">UPI App</label>
-                                <img className="w-10 ml-24" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtj1QNHzC6AVkGEEf1UoX2yVRkhM3w9nsA5w&s" alt="cashonedelivery" />
+                            <div className="border border-gray-300 p-5 w-[100%] flex  items-center justify-between">
+                                <input type="radio" name="payment" />
+                                <label className="-ml-8" htmlFor="">UPI App</label>
+                                <img className="w-10" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtj1QNHzC6AVkGEEf1UoX2yVRkhM3w9nsA5w&s" alt="cashonedelivery" />
                             </div>
                         </div>
 
@@ -61,18 +61,18 @@ function PaymentDetails(){
                         <div className="h-[48%] border border-gray-300 rounded-lg">
                             <div className="flex justify-between px-10 mt-5">
                                 <p className="text-2xl font-bold">Total</p>
-                                <p className="text-2xl">{total}</p>
+                                <p className="text-2xl flex items-center"><img className="h-6 " src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>{total}</p>
                             </div>
                             <hr className="w-[80%] justify-self-center text-gray-400" />
-                            <div className="flex justify-between px-10 mt-5">
+                            <div className="flex justify-between px-10 mt-5 opacity-60">
                                 <p className="text-2xl">Items</p>
                                 <p className="text-2xl">{cartQuantity}</p>
                             </div>
-                            <div className="flex justify-between px-10 mt-5">
+                            <div className="flex justify-between px-10 mt-5 opacity-60">
                                 <p className="text-2xl">Discount</p>
-                                <p className="text-2xl text-red-600">-{total/20}</p>
+                                <p className="text-2xl text-red-600 flex items-center"><img className="h-6 " src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>-{total/20}</p>
                             </div>
-                            <div className="flex justify-between px-10 mt-5">
+                            <div className="flex justify-between px-10 mt-5 opacity-60">
                                 <p className="text-2xl">Shipping Cost</p>
                                 <p className="text-2xl text-green-500">Free</p>
                             </div>
@@ -81,7 +81,7 @@ function PaymentDetails(){
                         <div className="h-[48%] border border-gray-300 rounded-lg flex flex-col items-center">
                             <p className="text-2xl mt-5 font-bold">Billing Address</p>
                             <hr className="w-[80%] justify-self-center text-gray-400" />
-                            <div className="text-2xl flex flex-col self-start ml-10 mt-5 gap-2">
+                            <div className="text-2xl flex flex-col self-start ml-10 mt-5 opacity-60">
                                 <p>{ShippingAddress?.fullName}</p>
                                 <p>{ShippingAddress?.StreetAddress}</p>
                                 <p>{ShippingAddress?.State}</p>

@@ -32,7 +32,7 @@ function Body(){
         <main className="flex flex-wrap justify-center bg-white">
             {filterData?.map((data) => 
             <Link className=" w-64 m-4 rounded-lg shadow-lg overflow-hidden  bg-white" key={data.id} to={`/product/${data.id}`}>
-                <img className="h-64 w-64 object-contain hover:scale-105 duration-300 hover:-translate-y-2 "  src={data.image} alt={data.title} />
+                <img className="h-64 w-64 object-contain hover:scale-105 duration-300 hover:-translate-y-2 "  src={data.image} alt={data.model} />
                 <div className="bg-gray-100">
                 <p className="min-h-12 hover:text-amber-700 text-gray-800  font-medium ml-1">{truncateString(data.title,45)}</p>
                     <div className="flex items-center ">

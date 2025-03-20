@@ -1,58 +1,54 @@
+import { Link } from "react-router-dom";
 import smartphone from "../assets/smartphone.png";
 
 
 function Footer(){
     return (
         <>
-        <footer className="mt-2 ">
-            <div className="flex justify-between p-3">
+        <footer className="mt-2 bg-blue-500 text-white p-6">
+            <div className="flex justify-between p-3 pb-10">
             <div>
-                <a className="ml-2 flex items-center gap-2" href="#"> 
-                    <img className="w-10 h-10" src={smartphone} alt="mobileshop"/> 
-                    <h3 className="text-xl font-extrabold text-blue-600">mobileshop</h3>
-                </a>
+                <Link className="ml-2 flex items-center gap-2 hover:scale-105 duration-300" to={"/"}> 
+                    <img className="w-15 h-15" src={smartphone} alt="mobileshop"/> 
+                    <h3 className="text-2xl font-extrabold text-white">SupaMart-V</h3>
+                </Link>
+                <p className="mb-3">Contact Us</p>
+                <div>
+                    <p className="flex items-center"><img className="w-5" src="https://cdn-user-icons.flaticon.com/192011/192011013/1742224426646.svg?token=exp=1742225382~hmac=345ba5a5a4f5ce03d64fd710a18c2282" alt="" /> Whats App</p>
+                    <p className="ml-5 mb-2">7788996655</p>
+                    <p className="flex items-center"><img className="w-5" src="https://cdn-user-icons.flaticon.com/192011/192011013/1742224666106.svg?token=exp=1742225566~hmac=9fa0a8bc1fe89e5e55047fda2b26fe1f" alt="" /> Call Us</p>
+                    <p className="ml-5">7788996655</p>
+                </div>
             </div>
 
             <div>
-                <h2 >About us</h2>
-                <ul>
-                    <li>About shopcart</li>
-                    <li>Careers</li>
-                    <li>News &amp; Blog</li>
-                    <li>Help</li>
-                    <li>Press Center</li>
-                    <li>Shop by location</li>
-                    <li>Shopcart brands</li>
-                    <li>Affiliate &amp; Partners</li>
-                    <li>Ideas &amp; Guides</li>
+                <h2  className="text-xl">Popular Products Category</h2>
+                <hr className=" opacity-60" />
+                <ul className=" list-disc p-5">
+                    <li className="hover:translate-x-3 hover:text-amber-400 duration-300"><Link to={"/body/mobile"}>Mobiles</Link></li>
+                    <li className="hover:translate-x-3 hover:text-amber-400 duration-300"><Link to={"/body/audio"}>HeadPhones</Link></li>
+                    <li className="hover:translate-x-3 hover:text-amber-400 duration-300"><Link to={"/body/gaming"}>Gamespad</Link></li>
+                    <li className="hover:translate-x-3 hover:text-amber-400 duration-300"><Link to={"/body/tv"}>TV</Link></li>
+                    <li className="hover:translate-x-3 hover:text-amber-400 duration-300"><Link to={"/body/audio"}>Speakers</Link></li>
                 </ul>
             </div>
             
 
-            <div>
-                <h2>Services</h2>
-                <ul>
-                    <li>Gift Card</li>
-                    <li>Mobile App</li>
-                    <li>Shipping &amp; Delivery</li>
-                    <li>Order Pickup</li>
-                    <li>Account Signup</li>
+            <div className="mr-20">
+                <h2 className="text-xl">Services</h2>
+                <hr className=" opacity-60" />
+                <ul className=" list-disc p-5">
+                    <li className="hover:translate-x-3 hover:text-amber-400 duration-300"><Link to={"#"}>About Us</Link></li>
+                    <li className="hover:translate-x-3 hover:text-amber-400 duration-300"><Link to={"#"}>Terms & Conditions</Link></li>
+                    <li className="hover:translate-x-3 hover:text-amber-400 duration-300"><Link to={"#"}>FAQ</Link></li>
+                    <li className="hover:translate-x-3 hover:text-amber-400 duration-300"><Link to={"#"}>Privacy & Pilicy</Link></li>
+                    <li className="hover:translate-x-3 hover:text-amber-400 duration-300"><Link to={"#"}>Cancellation & Return Policy</Link></li>
+
                 </ul>
             </div>
 
-            <div>
-                <h2>Help</h2>
-                <ul>
-                    <li>Shopcart Help</li>
-                    <li>Returns</li>
-                    <li>track orders</li>
-                    <li>contact us</li>
-                    <li>feedback</li>
-                    <li>Security &amp; Fraud</li>
-                </ul>
             </div>
-            </div>
-            <hr />
+            <hr className=" opacity-60"  />
             <div className="flex h-20 justify-evenly">
                 <div className="flex p-4 gap-4">
                     <div className="flex items-center">
@@ -71,13 +67,10 @@ function Footer(){
                     </div>
                 </div>
                 <div className="flex items-center">
-                    <div>
-                        <a href="#">Terms of Service</a>
-                        <a href="#">Privacy &amp; Policy</a>
-                    </div>
-                    <div>All Right reserved by Musemind 
-                        <a href="https://musemind.agency/" rel="dofollow" >ui/ux design</a>
-                        agency | 2022
+                    
+                    <div>All Right reserved by vikas 
+                        <a href="/" > ui/ux design </a>
+                         | 2022
                     </div>
                 </div>
             </div>

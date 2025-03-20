@@ -22,10 +22,10 @@ function Navbar() {
       <>
       <nav className="w-[100vw] bg-white h-20 flex justify-evenly items-center drop-shadow-lg fixed top-0 z-50">
         <div className=" flex justify-center items-center">
-            <a className=" flex justify-center items-center gap-2 hover:scale-105 duration-300" href="/"> 
+            <Link className=" flex justify-center items-center gap-2 hover:scale-105 duration-300" to={"/"}> 
                 <img className="w-16 h-16 " src={smartphone} alt="mobileshop"/> 
-                <h3 className="text-3xl font-extrabold text-blue-600 ">mobileshop</h3>
-            </a>
+                <h3 className="text-3xl font-extrabold text-blue-600 ">SupaMart-V</h3>
+            </Link>
             
         </div>
         <ul className="flex gap-10">
