@@ -3,7 +3,7 @@ import { UserContext } from "./context"
 import { useNavigate } from "react-router-dom"
 
 function PaymentDetails(){
-    let {ShippingAddress,ProgressBar,setProgressBar,cartItem,cartQuantity,total,setTotal}=useContext(UserContext)
+    let {ShippingAddress,ProgressBar,setProgressBar,cartItem,cartQuantity,total,setTotal,Ordered,setOrdered,setCartItem,setCartQuantity}=useContext(UserContext)
     
     let totalItem=0;
     
@@ -17,10 +17,15 @@ function PaymentDetails(){
     
     setProgressBar(ProgressBar=3)
     const navigate=useNavigate()
+
+    console.log(Ordered)
     return<>
             <div className="flex flex-col items-center mt-10">
                 <p className="text-4xl mb-5">Payment Method</p>
                 <form onSubmit={()=>{
+                        setOrdered(cartItem)
+                        setCartItem([])
+                        setCartQuantity(0)
                         navigate("/checkout/OrderedPlaced")
                         setProgressBar(ProgressBar=3)
                     }}>
@@ -94,8 +99,7 @@ function PaymentDetails(){
                     </div>
                 </div>
                 <div className="w-[60vw] flex justify-center mb-10" >
-                    <button type="submit" className=" self-end w-[40%] mr-2 bg-blue-600 text-white p-2  rounded-md hover:text-blue-600 hover:bg-white hover:scale-105 hover:border duration-300"
-                    >Place Order</button>
+                    <button type="submit" className=" self-end w-[40%] mr-2 bg-blue-600 text-white p-2  rounded-md hover:text-blue-600 hover:bg-white hover:scale-105 hover:border duration-300">Place Order</button>
                 </div>
                 </form> 
             </div>

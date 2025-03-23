@@ -30,12 +30,18 @@ function App() {
 })
 let [ProgressBar,setProgressBar]=useState(1)
 
+const [Auth,setAuth]=useState(null)
+
+const[Ordered,setOrdered]=useState({})
 
   return (
-    <UserContext.Provider value={{searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar}}>
-    <Navbar/>
-    <Outlet/>
-    <Footer/>
+    <UserContext.Provider value={{searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar,Auth,setAuth,Ordered,setOrdered}}>
+    <div className={`${Auth===null?" pointer-events-none opacity-60":""}`}>
+      <Navbar/>
+      <Outlet/>
+      <Footer/>
+    </div>
+    <LoginPage/>
     </UserContext.Provider>
   )
 }

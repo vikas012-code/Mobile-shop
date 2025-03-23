@@ -10,7 +10,7 @@ import { UserContext } from "./context.js";
 
 
 function Navbar() {
-    const {searchItem,setSearchItem,cartQuantity}=useContext(UserContext);
+    const {searchItem,setSearchItem,cartQuantity,Auth}=useContext(UserContext);
     const navigate=useNavigate()
 
     const handleSubmit=(e)=>{
@@ -29,7 +29,7 @@ function Navbar() {
             
         </div>
         <ul className="flex gap-10">
-            <button className="peer duration-300 h-20 border-b-2 border-transparent a hover:border-b-2 hover:border-b-blue-300 flex items-center focus:outline-none" >Category </button>
+            <button className="peer duration-300 h-20 border-b-2 border-transparent a hover:border-b-2 hover:text-blue-500 hover:scale-110 flex items-center focus:outline-none" >Category </button>
             <ul className=" invisible bg-white absolute top-20 p-1 rounded-b-lg peer-focus:visible active:visible ease-linear z-50">
                 <Link className="border-b border-gray-300 block hover:scale-95 duration-200" to="/body/mobile" ><img className="w-20 inline" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGSWYehtNHc5FsdWJBLqfn_8hBC0kSqEymNg&s" alt="" />Mobiles</Link>
                 <Link className="border-b border-gray-300 block hover:scale-95 duration-200" to="/body/audio"><img className="w-20 inline " src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/MUW33_AV3?wid=1144&hei=1144&fmt=jpeg&qlt=90&.v=1712255584873" alt="" />Headphones</Link>
@@ -49,7 +49,7 @@ function Navbar() {
         </div>
 
         <ul className="flex gap-10 justify-center items-center">
-            <li><a className="flex justify-center items-center gap-3 hover:text-blue-500 hover:scale-110 duration-300" href="#"><img className="w-6 h-6" src={account_icon} alt="accont" /> <p>Account</p></a></li>
+            <li><Link className="flex justify-center items-center gap-3 hover:text-blue-500 hover:scale-110 duration-300" to="/account"><img className="w-6 h-6" src={account_icon} alt="accont" /> <p>{Auth?Auth:"Account"}</p></Link></li>
             <li><Link className="flex justify-center items-center gap-3 hover:text-blue-500 hover:scale-110 duration-300" to="/cart"><img className="w-6 h-6" src={cart_icon} alt="cart" /> <p>Cart{cartQuantity>0 &&`(${cartQuantity})`}</p></Link></li>
         </ul>
       </nav>
