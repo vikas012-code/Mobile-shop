@@ -12,6 +12,7 @@ import ShippingDetails from './components/ShippingDetails.jsx';
 import PaymentDetails from './components/PaymentDetails.jsx';
 import OrderedPlaced from './components/OrderPlaced.jsx';
 import LoginPage from './components/LoginPage.jsx';
+import MyAccount from './components/MyAccount.jsx';
 
 const Router = createBrowserRouter([
   {
@@ -22,7 +23,6 @@ const Router = createBrowserRouter([
        path : "/" ,
        element : 
        <>
-        <LoginPage/>
         <HeroPage/>
         <Category props={"mobile"}/>
         <Category props={"TV"}/>
@@ -63,6 +63,10 @@ const Router = createBrowserRouter([
             element:<OrderedPlaced/>
           }
         ]
+      }
+      ,{
+        path:"/account",
+        element:<MyAccount/>
       }
     ]
   }
