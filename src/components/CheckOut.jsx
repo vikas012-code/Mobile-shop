@@ -8,7 +8,7 @@ function CheckOut(){
    
     return(
     <>
-        <div className="min-h-[50vh] bg-white ">
+        <div className="min-h-[50vh] bg-neutral-50">
             <CheckOutProgress />
             <Outlet/>
         </div>

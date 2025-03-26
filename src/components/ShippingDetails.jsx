@@ -13,7 +13,7 @@ function ShippingDetails(){
             <form className=" shadow-lg shadow-gray-400 flex flex-col p-5 gap-2 rounded-lg mb-5 w-[60vw] " onSubmit={(e)=>{
                 e.preventDefault()
                 navigate("/checkout/PaymentDetails")
-                setProgressBar(ProgressBar=2)
+                setProgressBar(ProgressBar+1)
                 }} >
                 <label htmlFor="FullName">FullName <span className="text-red-600">*</span></label>
                 <input className=" border p-1 rounded-lg" type="text" name="FullName" value={ShippingAddress.fullName} required onChange={(e)=>{

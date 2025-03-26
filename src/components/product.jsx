@@ -7,7 +7,7 @@ import { UserContext } from "./context";
 function Product(){
     const navigate=useNavigate()
     
-    const {cartItem ,setCartItem,cartQuantity,setCartQuantity}=useContext(UserContext);
+    const {cartItem ,setCartItem,cartQuantity,setCartQuantity,Auth,setAuth}=useContext(UserContext);
     const [quantity,setQuantity]=useState(0)
     let {id} = useParams()
 
@@ -85,16 +85,24 @@ function Product(){
                         <div className="flex flex-col mt-2 px-4">
                             <button className=" border rounded-lg bg-blue-600 text-white h-10 my-2 hover:bg-white hover:text-blue-600 hover:scale-105 duration-300"  onClick={()=>
                             {
-                            quantity > 0 ?setCartQuantity(cartQuantity+quantity) || addData():"";
+                            Auth?
+                            quantity > 0 ? setCartQuantity(cartQuantity+quantity) || addData()
+                             ||
                              setQuantity(0)
+                             ||
                              navigate("/checkout")
-
+                             :""                        
+                             
+                             :setAuth(null)
 
                             }}>Buy Now</button>
                             <button className=" border rounded-lg bg-white text-blue-600 h-10 my-2 hover:scale-105 duration-300" onClick={()=>
                             {
-                            quantity > 0 ? setCartQuantity(cartQuantity+quantity) || addData():"";
-                             setQuantity(0)   
+                            Auth?
+                            quantity > 0 && setCartQuantity(cartQuantity+quantity) || addData()
+                            ||
+                            setQuantity(0)
+                            :setAuth(null);
                             }}
                             >Add to cart</button>
                         </div>
