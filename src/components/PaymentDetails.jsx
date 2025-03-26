@@ -15,19 +15,20 @@ function PaymentDetails(){
             setTotal(totalItem)
     },[totalItem])
     
-    setProgressBar(ProgressBar=3)
+    // setProgressBar(ProgressBar=2)
+    
     const navigate=useNavigate()
 
     console.log(Ordered)
     return<>
             <div className="flex flex-col items-center mt-10">
                 <p className="text-4xl mb-5">Payment Method</p>
-                <form onSubmit={()=>{
-                        setOrdered(cartItem)
+                <form onSubmit={(e)=>{
+                        setOrdered([...Ordered,...cartItem])
                         setCartItem([])
                         setCartQuantity(0)
                         navigate("/checkout/OrderedPlaced")
-                        setProgressBar(ProgressBar=3)
+                        setProgressBar(ProgressBar+1)
                     }}>
                 <div className="  shadow-lg shadow-gray-500 w-[60vw] h-[60vw] flex p-5 justify-between rounded-xl mb-5">
 
