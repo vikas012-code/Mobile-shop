@@ -1,18 +1,13 @@
 import CryptoJS from "crypto-js"
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "./context";
 import cancel_img from "../assets/cancel.png"
 function LoginPage(){
 
     let _key = "secret_key"
 
-    const [user,setUser]=useState({
-        UserName:"",
-        Password:""
-    })
     
-    const navigate=useNavigate()
+    
 
     const [passCorrect,setPassCorrect]=useState(null)
     
@@ -20,7 +15,7 @@ function LoginPage(){
 
     const [formType,setFormType]=useState("login")
 
-    const{Auth,setAuth}=useContext(UserContext)
+    const{Auth,setAuth,user,setUser}=useContext(UserContext)
 
     function encrypt(txt) {
         return CryptoJS.AES.encrypt(txt, _key).toString();
@@ -47,24 +42,6 @@ function LoginPage(){
         SaveData(user.UserName,JSON.stringify({name:user.UserName,password:encrypt(user.Password)}))||setUserExit(false):""
         
     }
-
-    // SaveData("User",JSON.stringify({name:"vikas",password:encrypt("12345")}))
-
-    // console.log(JSON.parse(RetreiveData()))
-
-    // console.log(JSON.parse(RetreiveData()).name)
-
-    // console.log(decrypt(JSON.parse(RetreiveData()).password))
-
-
-    // encrypt_data=encrypt("hello")
-    // console.log(encrypt_data)
-    // console.log(decrypt(encrypt_data))
-
-    // encrypt_data=encrypt(JSON.stringify({name:"vikas",password:"1234"}))
-    // console.log(encrypt_data)
-    // console.log(JSON.parse(decrypt(encrypt_data)))
-  
 
     return(
     <>
@@ -97,7 +74,9 @@ function LoginPage(){
                     && 
                     <div className="flex flex-col items-center gap-2">
                         <button className=" mt-4 rounded-sm bg-blue-400 text-white  hover:bg-green-400 duration-300 w-23" onClick={(e)=>{   
-                        user.UserName.length>4 && user.Password.length>4 ? user.UserName===JSON.parse(RetreiveData())?.name  && user.Password===decrypt(JSON.parse(RetreiveData())?.password) ? setPassCorrect(true) || setAuth(user.UserName) :setPassCorrect(false):"";
+                        user.UserName.length>4 && user.Password.length>4 ? user.UserName===JSON.parse(RetreiveData())?.name  && user.Password===decrypt(JSON.parse(RetreiveData())?.password) ? setPassCorrect(true) || setAuth(user.UserName) 
+                        ||setUser({UserName:""})||setUser({Password:""})
+                        :setPassCorrect(false):"";
                     }}>Login</button>
                     <p className="">Don't have Account?<a className="cursor-pointer text-green-600 hover:underline" onClick={()=>{
                         setFormType("sign up")
@@ -118,7 +97,7 @@ function LoginPage(){
                 }
                 </div>
             </form>
-            {passCorrect===true && <h3 className="mt-4 text-green-500">Password correct</h3>}
+           
             {passCorrect===false && <h3 className="mt-4 text-red-500">Password incorrect</h3>}
             {userExit===true && <h3 className="mt-4 text-red-500">User Already Exit</h3>}
             {userExit===false && <h3 className="mt-4 text-green-500">Succesfully Registered</h3>}

@@ -3,16 +3,41 @@ import Similar from "./Similar"
 import Datas from "./datas";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "./context";
+import heart from "../assets/heart.png";
+import Pink_heart from "../assets/pink_heart.png";
 
 function Product(){
-    const navigate=useNavigate()
-    
-    const {cartItem ,setCartItem,cartQuantity,setCartQuantity,Auth,setAuth}=useContext(UserContext);
+    const navigate=useNavigate()     
+    const {cartItem ,setCartItem,cartQuantity,setCartQuantity,Auth,setAuth,WishListItem,setWishListItem}=useContext(UserContext)
+
     const [quantity,setQuantity]=useState(0)
+
     let {id} = useParams()
 
-    let value = Datas.filter((value)=> value.id==id)
-    let Data=value[0]
+    let Data = Datas.filter((value)=> value.id==id)[0]
+
+    
+
+
+    function wishList(data){
+        for(let i=0 ;i<WishListItem.length;i++){ 
+            if(WishListItem[i]?.id===data.id)
+                return Pink_heart
+        }
+        return heart
+    }
+
+    function addingWishList(data){
+        for(let i=0 ;i<WishListItem.length;i++){ 
+            if(WishListItem[i]?.id===data.id)
+                {
+                    setWishListItem(WishListItem.filter(item=> item.id!==data.id))
+                return
+                } 
+        }
+        setWishListItem([...WishListItem,data])
+    }
+
 
     function addData(){
         if(cartItem.length > 0){
@@ -28,8 +53,6 @@ function Product(){
             setCartItem([...cartItem, {Data,quantity}]) 
 
         }
-
-        
     }
     return(
         <>
@@ -41,6 +64,15 @@ function Product(){
                 <div className="flex items-center">
 
                     <img className="ml-10 h-80 " src={Data.image} alt="" />
+
+                    <button className=" w-10 h-10 relative right-5 bottom-40 cursor-pointer hover:scale-115 duration-300"
+                        onClick={()=>{
+                            addingWishList(Data)
+                        }}
+                        >
+                       <img className="w-10 h-9" src={wishList(Data)} />
+                    </button>
+
                     <div className=" ml-10 w-[50vw] -mt-20 ">
 
                         <p className="mt-5 text-2xl font-bold">{Data.title}</p>
@@ -54,7 +86,9 @@ function Product(){
                         </ul>
 
                     </div>
+                    
 
+                    
                     <div className=" h-58 w-50 ml-10 shadow-md shadow-gray-400">
 
                         <div className=" m-4  justify-between items-center"> 

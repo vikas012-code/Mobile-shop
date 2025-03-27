@@ -35,8 +35,14 @@ const [Auth,setAuth]=useState(null)
 const[Ordered,setOrdered]=useState([])
 
 const [WishListItem,setWishListItem]=useState([])
+
+const [user,setUser]=useState({
+  UserName:"",
+  Password:""
+})
+
   return (
-    <UserContext.Provider value={{searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar,Auth,setAuth,Ordered,setOrdered}}>
+    <UserContext.Provider value={{searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar,Auth,setAuth,Ordered,setOrdered,WishListItem,setWishListItem,user,setUser}}>
     <div className={`${Auth===null?" pointer-events-none opacity-60":""}`}>
       <Navbar/>
       <Outlet/>
