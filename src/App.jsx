@@ -34,6 +34,8 @@ const [Auth,setAuth]=useState(null)
 
 const[Ordered,setOrdered]=useState([])
 
+const [section,setSection]=useState("myaccount")
+
 const [WishListItem,setWishListItem]=useState([])
 
 const [user,setUser]=useState({
@@ -41,8 +43,12 @@ const [user,setUser]=useState({
   Password:""
 })
 
+const value={searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar,
+  Auth,setAuth,Ordered,setOrdered,WishListItem,setWishListItem,user,setUser,section,setSection}
+
+
   return (
-    <UserContext.Provider value={{searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar,Auth,setAuth,Ordered,setOrdered,WishListItem,setWishListItem,user,setUser}}>
+    <UserContext.Provider value={value}>
     <div className={`${Auth===null?" pointer-events-none opacity-60":""}`}>
       <Navbar/>
       <Outlet/>

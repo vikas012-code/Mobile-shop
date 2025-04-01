@@ -48,8 +48,8 @@ function Cards({data}){
         </Link>
         <button className=" relative bottom-78 left-57 cursor-pointer hover:scale-115 duration-300"
             onClick={()=>{
-                Auth?"": setAuth(null)
-                addingWishList(data)
+                Auth?addingWishList(data): setAuth(null)
+                
             }}
             ><img className="w-6 h-6" src={wishList(data)} />
         </button>

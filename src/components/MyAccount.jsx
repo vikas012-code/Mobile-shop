@@ -10,10 +10,9 @@ function MyAccount(){
     data.push(Datas[2])
     data.push(Datas[3])
     
-    const{ShippingAddress,setShippingAddress,Auth,setAuth}=useContext(UserContext)
+    const{ShippingAddress,setShippingAddress,Auth,setAuth,section,setSection}=useContext(UserContext)
     const {Ordered,WishListItem}=useContext(UserContext);    
 
-    const [section,setSection]=useState("myaccount")
 
     return(
     <div className=" min-h-[50vh] bg-white -mb-2 flex flex-col items-center justify-between">
@@ -108,7 +107,7 @@ function MyAccount(){
                             <hr />
                             <div className="flex items-center justify-between mt-2 shadow mr-2 pr-2">
                                 <img className="w-20 h-20" src={item.Data.image} alt={item.Data.title} />
-                                <p className=" text-gray-500 w-40 h-10 text-wrap truncate  text-sm">{item.Data.title}</p>
+                                <p className=" text-gray-500 w-40 h-10 text-wrap truncate  text-sm mr-60">{item.Data.title}</p>
                                 <p>{item.quantity}</p>
                             </div>
                         </div>

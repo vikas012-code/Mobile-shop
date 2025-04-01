@@ -4,6 +4,8 @@ import Datas from "./datas";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "./context";
 import heart from "../assets/heart.png";
+import star from "../assets/white-star.png";
+
 import Pink_heart from "../assets/pink_heart.png";
 
 function Product(){
@@ -67,7 +69,9 @@ function Product(){
 
                     <button className=" w-10 h-10 relative right-5 bottom-40 cursor-pointer hover:scale-115 duration-300"
                         onClick={()=>{
+                            Auth?
                             addingWishList(Data)
+                            :setAuth(null)
                         }}
                         >
                        <img className="w-10 h-9" src={wishList(Data)} />
@@ -76,8 +80,8 @@ function Product(){
                     <div className=" ml-10 w-[50vw] -mt-20 ">
 
                         <p className="mt-5 text-2xl font-bold">{Data.title}</p>
-                        <p>star 4</p>
-                        <p>{Data.onSale?"instock" : "out of stock "}</p>
+                        <p className="flex items-center bg-green-500 w-10 rounded-md px-1 mt-2 text-white"><img className="w-4 h-4 mr-1" src={star} alt="" /> 4</p>
+                        {/* <p>{Data.onSale?"stock" : "out of stock "}</p> */}
                         <p className="mt-2">{Data.color && `Color : ${Data.color}`}</p>
                         <ul className=" mt-3  list-disc list-inside text-gray-700">
                             <li>{Data.brand && `Brand : ${Data.brand}`}</li>
@@ -87,7 +91,6 @@ function Product(){
 
                     </div>
                     
-
                     
                     <div className=" h-58 w-50 ml-10 shadow-md shadow-gray-400">
 
@@ -99,21 +102,22 @@ function Product(){
                             {Data.discount && <p className=" text-sm text-gray-400  line-through">$ {(Data.price)+((Data.price)*Data.discount/100)}</p>}
                         </div>
 
-                        <div className="flex gap-2 justify-center items-center">
-                            <button className="border border-gray-400 w-8 h-8 rounded-full flex justify-center items-center" onClick={()=>{
+                        <div className="flex justify-center items-center">
+                            <div className=" border border-gray-300  flex gap-4 justify-center items-center">
+                            <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{
                                 quantity > 0 && setQuantity(quantity-1)
                             }}>
                                 -
                             </button>
-                            <p>
+                            <p className="">
                                 {quantity}
                             </p>
-                            <button className="border border-gray-400 w-8 h-8 rounded-full" onClick={()=>{
+                            <button className=" w-8 h-8 active:bg-gray-200 " onClick={()=>{
                                 setQuantity(quantity+1)
                             }}>
                                 +
                             </button>
-
+                            </div>
                         </div>
 
                         <div className="flex flex-col mt-2 px-4">

@@ -5,12 +5,14 @@ import search_icon from "../assets/search_icon.png";
 import { useContext, } from "react";
 import { Link,useNavigate } from "react-router-dom";
 import { UserContext } from "./context.js";
+import heart from "../assets/heart.png";
+
 
 
 
 
 function Navbar() {
-    const {searchItem,setSearchItem,cartQuantity,Auth}=useContext(UserContext);
+    const {searchItem,setSearchItem,cartQuantity,Auth,section,setSection}=useContext(UserContext);
     const navigate=useNavigate()
 
     const handleSubmit=(e)=>{
@@ -49,7 +51,12 @@ function Navbar() {
         </div>
 
         <ul className="flex gap-10 justify-center items-center">
-            <li><Link className="flex justify-center items-center gap-3 hover:text-blue-500 hover:scale-110 duration-300" to="/account"><img className="w-6 h-6" src={account_icon} alt="accont" /> <p>{Auth?Auth:"Account"}</p></Link></li>
+            <li><Link className="flex justify-center items-center gap-3 hover:text-blue-500 hover:scale-110 duration-300" to="/account" onClick={()=>{
+                setSection("mywishlist")
+            }}><img className="w-6 h-6" src={heart} alt="accont" /> <p>{"WishList"}</p></Link></li>
+            <li><Link className="flex justify-center items-center gap-3 hover:text-blue-500 hover:scale-110 duration-300" to="/account"  onClick={()=>{
+                setSection("myaccount")
+            }}><img className="w-6 h-6" src={account_icon} alt="accont" /> <p>{Auth?Auth:"Account"}</p></Link></li>
             <li><Link className="flex justify-center items-center gap-3 hover:text-blue-500 hover:scale-110 duration-300" to="/cart"><img className="w-6 h-6" src={cart_icon} alt="cart" /> <p>Cart{cartQuantity>0 &&`(${cartQuantity})`}</p></Link></li>
         </ul>
       </nav>
