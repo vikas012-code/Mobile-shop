@@ -5,17 +5,22 @@ import { Link } from "react-router-dom";
 function Cart(){
     const {cartItem,cartQuantity,setCartQuantity,total,setTotal}=useContext(UserContext);
 
+
     let totalItem=0;
 
+
     const items=cartItem;
+
 
     items?.map((item)=>{
         totalItem=totalItem+item.quantity*item?.Data.price;
     })
 
+
     useEffect(()=>{
         setTotal(totalItem)
     },[totalItem])
+
 
     return(
         <>
@@ -36,24 +41,28 @@ function Cart(){
                     </p>
                 </div>
                 <hr className="border-b-2 border-black" />
+
             {items.map((item)=>( item.quantity >0? 
             <div className="" key={item?.Data.id}>
-            <ul className="flex justify-between p-2 ">
+            <ul className="flex justify-between items-center pb-3 p-2 ">
                 <li><img className="min-w-20 h-20" src={item?.Data.image} alt="" /></li>
                 <li className="pt-2 w-220 overflow-clip text-nowrap mr-120">{item?.Data.title}</li>
                 <li className="absolute right-[24vw] pt-2 flex items-center"><img className="h-4 mt-0.5" src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>{item?.Data.price}</li>
 
-                <li className="absolute right-[17vw] pt-2 flex items-center">
-                    <button className="border border-gray-400 w-5 h-5 rounded-full flex justify-center items-center mr-1 pb-0.5" onClick={()=>{ item.quantity-=1 ; setCartQuantity(item.quantity) }}>-</button> 
+                <li className="absolute right-[15vw] pt-2 flex items-center">
+                    <div className=" border border-gray-300  flex gap-4 justify-center items-center">
+                    <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{ item.quantity-=1 ; setCartQuantity(item.quantity) }}>-</button> 
                     {item.quantity} 
-                    <button className="border border-gray-400 w-5 h-5 rounded-full flex justify-center items-center ml-1 pb-0.5" onClick={()=>{item.quantity+=1;setCartQuantity(item.quantity) }}>+</button>
+                    <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{item.quantity+=1;setCartQuantity(item.quantity) }}>+</button>
+                    </div>
                 </li>
                 <li className="absolute right-[4vw] pt-2 flex items-center"><img className="h-4 mt-0.5" src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>{item?.quantity*item?.Data.price}</li>
             </ul>
-            <hr className="border-b-1 border-gray-400"/>
+            <hr className="border-b-1 mb-2 border-gray-400"/>
             </div>:"")
             )
             }
+
             {
                 total>0 &&
                 <div>

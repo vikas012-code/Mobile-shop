@@ -41,7 +41,7 @@ function Footer(){
                     <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>About Us</Link></li>
                     <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>Terms & Conditions</Link></li>
                     <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>FAQ</Link></li>
-                    <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>Privacy & Pilicy</Link></li>
+                    <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>Privacy & Policy</Link></li>
                     <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>Cancellation & Return Policy</Link></li>
 
                 </ul>
