@@ -1834,7 +1834,7 @@
 
 const Datas = [
   {
-      "id": 1,
+      "_id": 1,
       "title": "Sony WH-1000XM3 Bluetooth Wireless Over Ear Headphones with Mic (Silver)",
       "image": "https://www.sony.co.in/image/6145c1d32e6ac8e63a46c912dc33c5bb?fmt=pjpeg&wid=330&bgcolor=FFFFFF&bgc=FFFFFF",
       "price": 7730,
@@ -1846,7 +1846,7 @@ const Datas = [
       "discount": 11
   },
   {
-      "id": 2,
+      "_id": 2,
       "title": "Microsoft Xbox X/S Wireless Controller Robot White",
       "image": "https://m.media-amazon.com/images/I/61MdJDbKYjL.jpg",
       "price": 570,
@@ -1859,7 +1859,7 @@ const Datas = [
       "discount": 4
   },
   {
-      "id": 3,
+      "_id": 3,
       "title": "Logitech G733 Lightspeed Wireless Gaming Headset with Suspension Headband, LIGHTSYNC RGB, Blue VO!CE mic Technology and PRO-G Audio Drivers - White",
       "image": "https://m.media-amazon.com/images/I/71xNjrzG69L.jpg",
       "price": 1384,
@@ -1872,7 +1872,7 @@ const Datas = [
       "discount": 3
   },
   {
-      "id": 4,
+      "_id": 4,
       "title": "Sony WH-1000XM5 Wireless Industry Leading Active Noise Cancelling Headphones, 8 Mics for Clear Calling, 30Hr Battery, 3 Min Quick Charge = 3 Hours Playback, Multi Point Connectivity, Alexa-Silver",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl12jggOfbpTgM8WzMOaqMPu4FT-4shfn9Mw&s",
       "price": 3620,
@@ -1887,7 +1887,7 @@ const Datas = [
       
   },
   {
-      "id": 5,
+      "_id": 5,
       "title": "Urbanista Los Angeles Sand Gold - World’s 1st Solar Powered Hybrid Active Noise Cancelling with Mic Premium Wireless Headphones, Unlimited Playtime",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-44NDNwjbBRmCZZ3NTvIPXh3sUDuRyuJydQ&s",
       "price": 2650,
@@ -1901,7 +1901,7 @@ const Datas = [
       "onSale": true
   },
   {
-      "id": 6,
+      "_id": 6,
       "title": "Xiaomi Wired in-Ear Earphones with Mic, Ultra Deep Bass & Metal Sound Chamber (Blue)",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOTLfjNv25mBwM46GBMRi0HutHefP3mGvIBg&s",
       "price": 550,
@@ -1913,7 +1913,7 @@ const Datas = [
       "onSale": true
   },
   {
-      "id": 7,
+      "_id": 7,
       "title": "boAt Rockerz 370 On Ear Bluetooth Headphones with Upto 12 Hours Playtime, Cozy Padded Earcups and Bluetooth v5.0, with Mic (Buoyant Black)",
       "image": "https://m.media-amazon.com/images/I/61kWB+uzR2L.jpg",
       "price": 200,
@@ -1925,7 +1925,7 @@ const Datas = [
       "onSale": true
   },
   {
-      "id": 8,
+      "_id": 8,
       "title": "Samsung Galaxy S21 FE 5G (Lavender, 8GB, 128GB Storage)",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwA5iHFI0vydavt5V_cnlwMc77EBXXWsiF7A&s",
       "price": 24340,
@@ -1938,7 +1938,7 @@ const Datas = [
       "onSale": true
   },
   {
-      "id": 9,
+      "_id": 9,
       "title": "Amkette EvoFox Elite Ops Wireless Gamepad for Android TV | Google TV | 8+ Hours of Play Time | Zero Lag Connectivity Upto 12 Feets | USB Extender for TV Included | - Dusk Grey",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR52W_BChkJRfo-IPO1Kna_KrVETeV59rAQpA&s",
       "price": 1300,
@@ -1950,7 +1950,7 @@ const Datas = [
       "discount": 3
   },
   {
-      "id": 10,
+      "_id": 10,
       "title": "Samsung Galaxy S22 5G (Phantom White, 8GB RAM, 128GB Storage) with No Cost EMI/Additional Exchange Offers",
       "image": "https://images.snapmint.com/product_assets/images/000/836/083/large/open-uri20221226-13169-xlq3b5?1672033218",
       "price": 57600,
@@ -1962,7 +1962,7 @@ const Datas = [
       "discount": 29
   },
   {
-      "id": 11,
+      "_id": 11,
       "title": "Samsung Galaxy S22 Ultra 5G (Burgundy, 12GB, 256GB Storage) ",
       "image": "https://m.media-amazon.com/images/I/71J8tz0UeJL.jpg",
       "price": 121470,
@@ -1975,7 +1975,7 @@ const Datas = [
       "onSale": true
   },
   {
-      "id": 12,
+      "_id": 12,
       "title": "Poco by Xiaomi F1 Steel Blue, 6GB RAM, 64GB Storage",
       "image": "https://m.media-amazon.com/images/I/61LghzBuGzL.jpg",
       "price": 13200,
@@ -1987,7 +1987,7 @@ const Datas = [
       "popular": true
   },
   {
-      "id": 13,
+      "_id": 13,
       "title": "Samsung Galaxy M14 5G (Smoky Teal, 6GB, 128GB Storage)",
       "image": "https://m.media-amazon.com/images/I/8155EFAxDzL._AC_UF350,350_QL80_.jpg",
       "price": 18700,
@@ -1999,7 +1999,7 @@ const Datas = [
       "discount": 11
   },
   {
-      "id": 14,
+      "_id": 14,
       "title": "Apple iPhone 14 (128 GB) - Blue",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiwy8UKJ1lqIe8Tm6zQllCDUnJ4e_6YhPJKA&s",
       "price": 60900,
@@ -2013,7 +2013,7 @@ const Datas = [
 
   },
   {
-      "id": 15,
+      "_id": 15,
       "title": "Apple iPhone 14 Pro Max (256 GB) - Deep Purple",
       "image": "https://m.media-amazon.com/images/I/71yzJoE7WlL._AC_UF1000,1000_QL80_.jpg",
       "price": 121000,
@@ -2027,7 +2027,7 @@ const Datas = [
 
   },
   {
-      "id": 16,
+      "_id": 16,
       "title": "Apple iPhone 14 Pro (256 GB) - Gold",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRN7ULBt5dqbqxcCc2cn4POTjKVd7RPWj9nvg&s",
       "price": 84600,
@@ -2040,7 +2040,7 @@ const Datas = [
 
   },
   {
-      "id": 17,
+      "_id": 17,
       "title": "Apple iPhone 12 (256GB) - Green",
       "image": "https://rukminim2.flixcart.com/image/850/1000/kg8avm80/mobile/p/f/w/apple-iphone-12-dummyapplefsn-original-imafwg8dubf3nytw.jpeg?q=90&crop=false",
       "price": 34844,
@@ -2053,7 +2053,7 @@ const Datas = [
 
   },
   {
-      "id": 18,
+      "_id": 18,
       "title": "Xiaomi 12 Pro | 5G (Noir Black, 8GB RAM, 256GB Storage) | Snapdragon 8 Gen 1 | 50+50+50MP Flagship Cameras (OIS) | 10bit 2K+ Curved AMOLED Display",
       "image": "https://rukminim3.flixcart.com/image/850/1000/xif0q/mobile/7/y/u/-original-imagqmtfu8gt62yv.jpeg?q=90&crop=false",
       "price": 65500,
@@ -2066,7 +2066,7 @@ const Datas = [
       "onSale": true
   },
   {
-      "id": 19,
+      "_id": 19,
       "title": " Xiaomi 11T Pro 5G Hyperphone (Meteorite Black, 8GB RAM, 256GB Storage) |SD 888|120W HyperCharge|Segment's only Phone with Dolby Vision+Dolby Atmos",
       "image": "https://m.media-amazon.com/images/I/71qe5DogAtL.jpg",
       "price": 25000,
@@ -2079,7 +2079,7 @@ const Datas = [
       "discount": 7
   },
   {
-      "id": 20,
+      "_id": 20,
       "title": "Samsung Galaxy M13 (Aqua Green, 6GB, 128GB Storage)",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvLEs84Oe56058bI524q-yeM89Rm67QRk6TA&s",
       "price": 14000,
@@ -2091,7 +2091,7 @@ const Datas = [
       "discount": 9
   },
   {
-      "id": 21,
+      "_id": 21,
       "title": "Redmi Note 12 5G Matte Black 6GB RAM 128GB ROM | 1st Phone with 120Hz Super AMOLED and Snapdragon® 4 Gen 1 | 48MP AI Triple Camera",
       "image": "https://m.media-amazon.com/images/I/81ZZPvIWnYL.jpg",
       "price": 25000,
@@ -2102,7 +2102,7 @@ const Datas = [
       "category": "mobile"
   },
   {
-      "id": 22,
+      "_id": 22,
       "title": "Sennheiser HD 400s Wired Over The Ear Headphone with Mic (Black)",
       "image": "https://m.media-amazon.com/images/I/51L8UeauZEL._AC_UF1000,1000_QL80_.jpg",
       "price": 5400,
@@ -2114,7 +2114,7 @@ const Datas = [
       "discount": 9
   },
   {
-      "id": 23,
+      "_id": 23,
       "title": "Ant Esports GP310 Wireless Gamepad, Compatible for PC & Laptop (Windows 10/8 /7, Steam) / PS3 / Android",
       "image": "https://m.media-amazon.com/images/I/61FXFhr1r7L.jpg",
       "price": 1400,
@@ -2128,7 +2128,7 @@ const Datas = [
       "onSale": true
   },
   {
-      "id": 24,
+      "_id": 24,
       "title": "Logitech G502 Lightspeed Wireless Gaming Mouse, 25K Hero Gaming Sensor, 25600 DPI, RGB, Ultra-Light, 11 Programmable Buttons, Long Life Battery, PowerPlay-Compatible, PC - Black",
       "image": "https://m.media-amazon.com/images/I/51ZLPEu0SmS.jpg",
       "price": 500,
@@ -2140,7 +2140,7 @@ const Datas = [
       "discount": 3
   },
   {
-      "id": 25,
+      "_id": 25,
       "title": "Samsung Galaxy S23 5G (Green, 8GB, 128GB Storage)",
       "image": "https://m.media-amazon.com/images/I/71RnJXDexML.jpg",
       "price": 35905,
@@ -2154,7 +2154,7 @@ const Datas = [
       "onSale": true
   },
   {
-      "id": 26,
+      "_id": 26,
       "title": "Handheld Game Console 5.1 inch Pro Retro Games Consoles Built-in Classic Games Rechargeable Battery Portable Style Game Consoles X12",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeLJRXmSn7-8EbnLzljPIOkc1pTQJdE0oyGA&s",
       "price": 1630,
@@ -2165,7 +2165,7 @@ const Datas = [
       "discount": 9
   },
   {
-      "id": 27,
+      "_id": 27,
       "title": "Sony PS5 PlayStation Console+God Of War Ragnarok | Standard Edition | PS5 Game (PlayStation 5)",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAv2HnkuRxK6THyV1zEiWhH_isei5vMZYsOA&s",
       "price": 40700,
@@ -2177,7 +2177,7 @@ const Datas = [
       "discount": 11
   },
   {
-      "id": 28,
+      "_id": 28,
       "title": "Apple AirPods (3rd Generation) with Lightning Charging Case ​​​​​​​",
       "image": "https://m.media-amazon.com/images/I/61CVih3UpdL.jpg",
       "price": 23000,
@@ -2188,7 +2188,7 @@ const Datas = [
       "category": "audio"
   },
   {
-      "id": 29,
+      "_id": 29,
       "title": "Sony WH-CH520, Wireless On-Ear Bluetooth Headphones with Mic, Upto 50 Hours Playtime, DSEE Upscale, Multipoint Connectivity/Dual Pairing,Voice Assistant App Support for Mobile Phones (Blue)",
       "image": "https://m.media-amazon.com/images/I/41lArSiD5hL.jpg",
       "price": 2600,
@@ -2200,7 +2200,7 @@ const Datas = [
       "discount": 3
   },
   {
-      "id": 30,
+      "_id": 30,
       "title": "Sony Srs-Xb13 Wireless Extra Bass Portable Compact Bluetooth Speaker with 16 Hours Battery Life, Type-C, Ip67 Waterproof, Dustproof, with Mic, Loud Audio for Phone Calls/Work from Home (Black), Small",
       "image": "https://m.media-amazon.com/images/I/614pmXRPMFL.jpg",
       "price": 4200,
@@ -2213,7 +2213,7 @@ const Datas = [
       "discount": 3
   },
   {
-      "id": 31,
+      "_id": 31,
       "title": "Panasonic RB-M300B Deep Bass Wireless Bluetooth Immersive Headphones with XBS DEEP and Bass Augmentation (Sand Beige), RB-M300B-C",
       "image": "https://m.media-amazon.com/images/I/4188XMBVylL.jpg",
       "price": 2890,
@@ -2226,7 +2226,7 @@ const Datas = [
       "discount": 15
   },
   {
-      "id": 32,
+      "_id": 32,
       "title": "Sony WH-CH520, Wireless On-Ear Bluetooth Headphones with Mic, Upto 50 Hours Playtime, DSEE Upscale, Multipoint Connectivity/Dual Pairing,Voice Assistant App Support for Mobile Phones (Beige)",
       "image": "https://m.media-amazon.com/images/I/61C66qTqnwL.jpg",
       "price": 5400,
@@ -2238,7 +2238,7 @@ const Datas = [
       "discount": 3
   },
   {
-      "id": 33,
+      "_id": 33,
       "title": "boAt Stone 180 5W Bluetooth Speaker with Upto 10 Hours Playback, 1.75\" Driver, IPX7 & TWS Feature(Black)",
       "image": "https://m.media-amazon.com/images/I/71EUBuY6bIL.jpg",
       "price": 1300,
@@ -2250,7 +2250,7 @@ const Datas = [
       "discount": 2
   },
   {
-      "id": 34,
+      "_id": 34,
       "title": "Mivi Play Bluetooth Speaker with 12 Hours Playtime. Wireless Speaker Made in India with Exceptional Sound Quality, Portable and Built in Mic-Black",
       "image": "https://m.media-amazon.com/images/I/61UJnlIHF9S.jpg",
       "price": 1000,
@@ -2263,7 +2263,7 @@ const Datas = [
       "discount": 3
   },
   {
-      "id": 35,
+      "_id": 35,
       "title": " JBL Go 2, Wireless Portable Bluetooth Speaker with Mic, JBL Signature Sound, Vibrant Color Options with IPX7 Waterproof & AUX (Blue)",
       "image": "https://m.media-amazon.com/images/I/81wtvrNlJBL._AC_UF1000,1000_QL80_.jpg",
       "price": 2400,
@@ -2276,7 +2276,7 @@ const Datas = [
       "onSale": true
   },
   {
-      "id": 36,
+      "_id": 36,
       "title": "Mivi Duopods A25 Bluetooth Truly Wireless in Ear Earbuds with Mic with 40Hours Battery, 13Mm Bass Drivers & Made in India. with Immersive Sound Quality, Voice Assistant, Touch Control (White)",
       "image": "https://m.media-amazon.com/images/I/61yTSVeLebS._AC_UF1000,1000_QL80_.jpg",
       "price": 1200,
@@ -2289,7 +2289,7 @@ const Datas = [
       "discount": 6
   },
   {
-      "id": 37,
+      "_id": 37,
       "title": "soundcore by Anker Space Q45 Adaptive Noise Cancelling Headphones, Reduce Noise by Up to 98%, Ultra Long 50H Playtime, App Customization, Hi-Res Sound with Details, Bluetooth 5.3",
       "image": "https://m.media-amazon.com/images/I/61PKyzkgpCL._AC_UF1000,1000_QL80_.jpg",
       "price": 4150,
@@ -2301,7 +2301,7 @@ const Datas = [
       "discount": 29
   },
   {
-      "id": 38,
+      "_id": 38,
       "title": " Marshall Uxbridge Airplay Multi-Room Wireless Speaker with Alexa Built-in - White",
       "image": "https://m.media-amazon.com/images/I/81WIcjaGp2L._AC_UF1000,1000_QL80_.jpg",
       "price": 26600,
@@ -2315,7 +2315,7 @@ const Datas = [
       "onSale": true
   },
   {
-      "id": 39,
+      "_id": 39,
       "title": " Bang & Olufsen Beosound Balance Wireless Multiroom Speaker, Natural Oak",
       "image": "https://m.media-amazon.com/images/I/91xz5VkenTL.jpg",
       "price": 58040,
@@ -2327,7 +2327,7 @@ const Datas = [
       "discount": 21
   },
   {
-      "id": 40,
+      "_id": 40,
       "title": "JBL Tune 720BT Wireless Over Ear Headphones with Mic, Pure Bass Sound, Upto 76 Hrs Playtime, Speedcharge, Dual Pairing, Customizable Bass with Headphones App, Lightweight, Bluetooth 5.3 (Blue)",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsRLvB_XM2yxFFfazj0d2tdbSok9ggGTG1-g&s",
       "price": 6300,
@@ -2340,7 +2340,7 @@ const Datas = [
       "discount": 9
   },
   {
-      "id": 41,
+      "_id": 41,
       "title": " Sony SA-SW5 300W Wireless Subwoofer for HT-A9 and HT-A7000 - Black",
       "image": "https://m.media-amazon.com/images/I/614y+tUDz7L.jpg",
       "price": 6290,
@@ -2352,7 +2352,7 @@ const Datas = [
       "discount": 9
   },
   {
-      "id": 42,
+      "_id": 42,
       "title": " DENON Home 350 Wireless Speaker - Powerful Room Filling Sound with Bluetooth, AirPlay 2 and Alexa Built-in - White",
       "image": "https://m.media-amazon.com/images/I/71tr2znIxSL._AC_UF1000,1000_QL80_.jpg",
       "price": 9190,
@@ -2364,7 +2364,7 @@ const Datas = [
       "discount": 9
   },
   {
-      "id": 43,
+      "_id": 43,
       "title": "JBL Wave 200 Wireless Earbuds (TWS) with Mic, 20 Hours Playtime, Deep Bass Sound, Dual Connect Technology, Quick Charge, Comfort Fit Ergonomic Design, Voice Assistant Support for Mobiles (Black)",
       "image": "https://m.media-amazon.com/images/I/41i3U6EdkbL._AC_UF1000,1000_QL80_.jpg",
       "price": 2400,
@@ -2375,7 +2375,7 @@ const Datas = [
       "category": "audio"
   },
   {
-      "id": 44,
+      "_id": 44,
       "title": "Sony WF-C700N Bluetooth Truly Wireless Lightest Active Noise Cancellation in Ear Earbuds, Multipoint Connection, 10 mins Super Quick Charge, 20hrs Batt, IPX4 Ratings, Fast Pair, App Support-Black",
       "image": "https://m.media-amazon.com/images/I/41l+GRy9UsL.jpg",
       "price": 3080,
@@ -2388,7 +2388,7 @@ const Datas = [
       "discount": 9
   },
   {
-      "id": 45,
+      "_id": 45,
       "title": "New Apple AirPods Max - Pink",
       "image": "https://m.media-amazon.com/images/I/81NIpE9-5mL._AC_UF1000,1000_QL80_.jpg",
       "price": 57200,
@@ -2401,7 +2401,7 @@ const Datas = [
       "discount": 9
   },
   {
-      "id": 46,
+      "_id": 46,
       "title": "Redmi 80 cm (32 inches) HD Ready Smart LED Fire TV L32R8-FVIN (Black)",
       "image": "https://m.media-amazon.com/images/I/819Lw2PE8tL.jpg",
       "price": 21380,
@@ -2414,7 +2414,7 @@ const Datas = [
       "discount": 7
   },
   {
-      "id": 47,
+      "_id": 47,
       "title": "Samsung 108 cm (43 inches) Crystal iSmart 4K Ultra HD Smart LED TV UA43CUE60AKLXL (Black)",
       "image": "https://m.media-amazon.com/images/I/81s35LoX36L.jpg",
       "price": 30000,
@@ -2426,7 +2426,7 @@ const Datas = [
       "discount": 9
   },
   {
-      "id": 48,
+      "_id": 48,
       "title": "Mi 125 cm (50 inches) X Series 4K Ultra HD Smart Android LED TV L50M7-A2IN (Black)",
       "image": "https://m.media-amazon.com/images/I/81UT46-gwRL.jpg",
       "price": 38400,
@@ -2439,7 +2439,7 @@ const Datas = [
       "discount": 11
   },
   {
-      "id": 49,
+      "_id": 49,
       "title": " Acer 126 cm (50 inches) V Series 4K Ultra HD Smart QLED Google TV AR50GR2851VQD (Black)",
       "image": "https://m.media-amazon.com/images/I/71ceJ59ypkL._AC_UF1000,1000_QL80_.jpg",
       "price": 44400,
@@ -2451,7 +2451,7 @@ const Datas = [
       "discount": 5
   },
   {
-      "id": 50,
+      "_id": 50,
       "title": "LG 139 cm (55 inches) 4K Ultra HD Smart OLED TV 55BXPTA (Dark Steel Silver)",
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT43BOnEisRxnyjYbZklPNGG7lyNu4ouZm7bQ&s",
       "price": 33220,

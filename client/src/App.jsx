@@ -4,12 +4,21 @@ import Footer from "./components/Footer"
 
 import { Outlet } from "react-router-dom"
 import { UserContext } from "./components/context"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import LoginPage from "./components/LoginPage"
 
 
 
 function App() {
+  const [datas ,setDatas]=useState([])
+
+  useEffect(()=>{
+    fetch("http://localhost:8000/products")
+    .then((res)=> res.json())
+    .then((res)=>setDatas(res))
+  },[])
+  
+ 
   const [searchItem,setSearchItem]= useState("")
 
   const [cartItem ,setCartItem]=useState([])
@@ -43,7 +52,7 @@ const [user,setUser]=useState({
   Password:""
 })
 
-const value={searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar,
+const value={datas,searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar,
   Auth,setAuth,Ordered,setOrdered,WishListItem,setWishListItem,user,setUser,section,setSection}
 
 

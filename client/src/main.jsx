@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
-import Product from './components/product.jsx'
+import Product from './components/Product.jsx'
 import Body from './components/Body.jsx'
 import Category from './components/Category.jsx'
 import HeroPage from './components/HeroPage.jsx'
@@ -39,7 +39,7 @@ const Router = createBrowserRouter([
         element : <Body/>
       },
       {
-        path :"/product/:id",
+        path :"/product/:_id",
         element :<Product/>
       },
       {
