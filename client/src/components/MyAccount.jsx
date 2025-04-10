@@ -1,17 +1,17 @@
 import { useContext, useState } from "react";
 import { UserContext } from "./context";
-import Datas from "./datas";
+// import Datas from "./datas";
 import { Link } from "react-router-dom";
 
 function MyAccount(){
-    const data=[]
-    data.push(Datas[0])
-    data.push(Datas[1])
-    data.push(Datas[2])
-    data.push(Datas[3])
+    // const data=[]
+    // data.push(Datas[0])
+    // data.push(Datas[1])
+    // data.push(Datas[2])
+    // data.push(Datas[3])
     
-    const{ShippingAddress,setShippingAddress,Auth,setAuth,section,setSection}=useContext(UserContext)
-    const {Ordered,WishListItem}=useContext(UserContext);    
+    const{datas,ShippingAddress,setShippingAddress,Auth,setAuth,section,setSection,Ordered,WishListItem}=useContext(UserContext)
+       
 
 
     return(

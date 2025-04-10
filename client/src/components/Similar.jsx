@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
-import datas from "./datas.js"
+// import datas from "./datas.js"
 import { Link } from "react-router-dom";
 import Cards from "./Cards.jsx";
+import { UserContext } from "./context.js";
 
 function Category({props}){
+    const {datas}=useContext(UserContext)
     
     const [search,setSearch]=useState("")
 
@@ -27,7 +29,7 @@ function Category({props}){
             <div className="flex overflow-x-scroll overflow-y-hidden">
 
             {filterData?.map((data) => 
-                <div key={data.id}>
+                <div key={data._id}>
                     <Cards data={data}/>
                 </div>
             )}

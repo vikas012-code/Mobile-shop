@@ -43,7 +43,7 @@ function Cart(){
                 <hr className="border-b-2 border-black" />
 
             {items.map((item)=>( item.quantity >0? 
-            <div className="" key={item?.Data.id}>
+            <div className="" key={item?.Data._id}>
             <ul className="flex justify-between items-center pb-3 p-2 ">
                 <li><img className="min-w-20 h-20" src={item?.Data.image} alt="" /></li>
                 <li className="pt-2 w-220 overflow-clip text-nowrap mr-120">{item?.Data.title}</li>

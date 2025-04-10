@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import Similar from "./Similar"
-import Datas from "./datas";
+// import Datas from "./datas";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "./context";
 import heart from "../assets/heart.png";
@@ -10,20 +10,20 @@ import Pink_heart from "../assets/pink_heart.png";
 
 function Product(){
     const navigate=useNavigate()     
-    const {cartItem ,setCartItem,cartQuantity,setCartQuantity,Auth,setAuth,WishListItem,setWishListItem}=useContext(UserContext)
+    const {datas,cartItem ,setCartItem,cartQuantity,setCartQuantity,Auth,setAuth,WishListItem,setWishListItem}=useContext(UserContext)
 
     const [quantity,setQuantity]=useState(0)
 
-    let {id} = useParams()
+    let {_id} = useParams()
 
-    let Data = Datas.filter((value)=> value.id==id)[0]
+    let Data = datas.filter((value)=> value._id==_id)[0]
 
     
 
 
     function wishList(data){
         for(let i=0 ;i<WishListItem.length;i++){ 
-            if(WishListItem[i]?.id===data.id)
+            if(WishListItem[i]?._id===data._id)
                 return Pink_heart
         }
         return heart
@@ -96,10 +96,10 @@ function Product(){
 
                         <div className=" m-4  justify-between items-center"> 
                             <div className="flex justify-between items-center">
-                                <p className="text-lg font-bold">$ {Data.price}</p>
-                                <p className="text-green-400">({Data.discount}%off)</p> 
+                                <p className="text-lg font-bold">₹{Data.price}</p>
+                                {Data?.discount>0 &&<p className="text-green-400">({Data.discount}%off)</p> }
                             </div>
-                            {Data.discount && <p className=" text-sm text-gray-400  line-through">$ {(Data.price)+((Data.price)*Data.discount/100)}</p>}
+                            {Data.discount>0 && <p className=" text-sm text-gray-400  line-through">₹{(Data.price)+((Data.price)*Data.discount/100)}</p>}
                         </div>
 
                         <div className="flex justify-center items-center">
