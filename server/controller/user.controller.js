@@ -30,3 +30,9 @@ export async function GetUsersById(req ,res) {
   res.json(UsersDetail)
 }
 
+export async function GetUserByEmail(req ,res) {
+  const {email }= req.body;
+  const UsersDetail=await Users.find({email:email})
+  res.json(UsersDetail)
+}
+

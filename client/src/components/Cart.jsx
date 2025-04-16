@@ -42,7 +42,8 @@ function Cart(){
                 </div>
                 <hr className="border-b-2 border-black" />
 
-            {items.map((item)=>( item.quantity >0? 
+            {items.map((item)=>( 
+                 
             <div className="" key={item?.Data._id}>
             <ul className="flex justify-between items-center pb-3 p-2 ">
                 <li><img className="min-w-20 h-20" src={item?.Data.image} alt="" /></li>
@@ -50,16 +51,21 @@ function Cart(){
                 <li className="absolute right-[24vw] pt-2 flex items-center"><img className="h-4 mt-0.5" src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>{item?.Data.price}</li>
 
                 <li className="absolute right-[15vw] pt-2 flex items-center">
-                    <div className=" border border-gray-300  flex gap-4 justify-center items-center">
+                    <div className=" border border-gray-300  flex gap-4  items-center min-w-26">
                     <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{ item.quantity-=1 ; setCartQuantity(item.quantity) }}>-</button> 
-                    {item.quantity} 
-                    <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{item.quantity+=1;setCartQuantity(item.quantity) }}>+</button>
+
+                    <p className="">{item.quantity} </p>
+                    
+                    {item.quantity<item.Data.quantity
+                    &&
+                    <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{item.quantity+=1 ; setCartQuantity(item.quantity)}}>+</button>
+                    }
                     </div>
                 </li>
                 <li className="absolute right-[4vw] pt-2 flex items-center"><img className="h-4 mt-0.5" src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>{item?.quantity*item?.Data.price}</li>
             </ul>
             <hr className="border-b-1 mb-2 border-gray-400"/>
-            </div>:"")
+            </div>)
             )
             }
 

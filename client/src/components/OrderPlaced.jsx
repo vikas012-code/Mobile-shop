@@ -7,7 +7,6 @@ function OrderedPlaced(){
     return<>
     <div className="flex justify-center p-10">
         <img src={OrderPlace} alt="" />
-
     </div>
     </>
 }

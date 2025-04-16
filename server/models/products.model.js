@@ -16,7 +16,7 @@ const productSchema = mongoose.Schema(
     },
     description: {
       type: String,
-      default: "This is the best product",
+      required: true,
     },
     brand: {
       type: String,

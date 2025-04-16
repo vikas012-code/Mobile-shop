@@ -1,5 +1,5 @@
 import express from "express";
-import {AllProductList,GetProductById} from "../controller/product.controller.js"
+import {AllProductList,AddProduct,GetProductById,UpdateQuantityByOrder,UpdateQuantityByAdding} from "../controller/product.controller.js"
 
 const route = express.Router()
 
@@ -10,9 +10,13 @@ const route = express.Router()
 
 route.get("/", AllProductList)
 
-
+route.post("/",AddProduct)
 
 route.get("/getproductbyid",GetProductById)
+
+route.patch("/UpdateQuantityByOrder",UpdateQuantityByOrder)
+
+route.patch("/UpdateQuantityByAdding",UpdateQuantityByAdding)
 
 
 
