@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context";
 // import Datas from "./datas";
 import { Link } from "react-router-dom";
@@ -10,10 +10,46 @@ function MyAccount(){
     // data.push(Datas[2])
     // data.push(Datas[3])
     
-    const{datas,ShippingAddress,setShippingAddress,Auth,setAuth,section,setSection,Ordered,WishListItem}=useContext(UserContext)
-       
+    const{user,datas,ShippingAddress,setShippingAddress,Auth,setAuth,section,setSection,Ordered,WishListItem}=useContext(UserContext)
+    
+    
+    const [wishListdetails,setWishListdetails]=useState([])
+    // (previousData) => ([
+    //     ...previousData,
+    //     "this is a different string",
+    // ])
 
+    const [orderDetails,setOrderDetails]=useState([])
+    function wishlistadding(data){
+        setWishListdetails((previousData)=>([...previousData,datas.filter( item => item._id===data.product_id)[0]]))
+        
+    }
 
+    useEffect(()=>{
+        for(let i=0;i<WishListItem.length;i++){
+            wishlistadding(WishListItem[i])
+        }
+    },[user,WishListItem.length])
+
+    function orderadding(data){
+        for(let i=0;i<datas.length;i++){
+            if(datas[i]._id===data.product_id){
+                setOrderDetails((previousData)=>([...previousData,{item:datas[i] ,data:data} ]))
+                return
+        }
+    }
+        
+    }
+   
+    useEffect(()=>{
+        for(let i=0;i<Ordered.length;i++){
+            //console.log(Ordered[i])
+            orderadding(Ordered[i])
+        }
+    
+    },[user,Ordered.length])
+    
+    
     return(
     <div className=" min-h-[50vh] bg-white -mb-2 flex flex-col items-center justify-between">
 
@@ -74,13 +110,13 @@ function MyAccount(){
 
                 <div className={`p-8 pt-5  ${section!=="mywishlist" && "hidden"}`}>
                     <h3 className="text-lg font-bold">Products</h3>
-                <div className="flex flex-wrap p-2 gap-2 -ml-3 ">
+                <div className="flex justify-center flex-wrap p-2 gap-2 -ml-3 ">
                 {
-                    WishListItem.length>0?WishListItem.map((item)=>
-                        <Link key={item.id} className="shadow w-25 h-35 mx-1" to={`/product/${item.id}`}>
-                            <img className=" h-25" src={item.image} alt="" />
+                 Auth?   WishListItem.length>0?wishListdetails.map((item,i)=>
+                        <Link key={i} className="shadow w-25 h-35 mx-1" to={`/product/${item._id}`}>
+                            <img className=" h-25 object-contain" src={item.image} alt="" />
                             <p className="text-xs truncate">{item.title}</p>
-                            <p className="text-sm font-bold">₹ {item.price}</p>
+                            <p className="text-sm font-bold">₹{item.price}</p>
                         </Link>
                     )
                     :
@@ -88,6 +124,14 @@ function MyAccount(){
                         <p className="text-xl mt-10">There is no item your wishlist</p>
                         <button className=" mt-2 bg-blue-500 text-white w-40 rounded-lg hover:scale-105 duration-300">Continue Shopping</button>
                     </Link>
+                    :
+                    <div className="text-center ">
+                        <p className="text-xl mt-4">Not Logged In</p>
+                        <button className="mt-2 font-bold bg-cyan-500 w-15 rounded-md text-white" onClick={()=>{
+                            setAuth(null)
+                        }}>Login</button>
+
+                    </div>
                     }
                 </div>
                 </div>
@@ -95,6 +139,7 @@ function MyAccount(){
                 <div className={`pl-8 pt-5  ${section!=="myorder" && "hidden"} overflow-y-auto`}>
                     <h1 className="text-xl font-bold">Ordered List</h1>
                     { 
+                    Auth? 
                     Ordered.length > 0 ?
 
                     <div>
@@ -102,13 +147,13 @@ function MyAccount(){
                         <p>Product</p>
                         <p>Quantity</p>
                     </div>
-                    {Ordered.map((item)=>(
-                        <div key={item.id}>
+                    {orderDetails.map((items,i)=>(
+                        <div key={i}>
                             <hr />
                             <div className="flex items-center justify-between mt-2 shadow mr-2 pr-2">
-                                <img className="w-20 h-20" src={item.Data.image} alt={item.Data.title} />
-                                <p className=" text-gray-500 w-40 h-10 text-wrap truncate  text-sm mr-60">{item.Data.title}</p>
-                                <p>{item.quantity}</p>
+                                <img className="w-20 h-20" src={items?.item?.image} alt={items?.item?.title} />
+                                <p className=" text-gray-500 w-40 h-10 text-wrap truncate  text-sm mr-60">{items?.item?.title}</p>
+                                <p>{items?.data?.quantity}</p>
                             </div>
                         </div>
                     ))}
@@ -118,6 +163,13 @@ function MyAccount(){
                         <p className="text-xl mt-10">your order list is empty</p>
                         <button className=" mt-2 bg-blue-500 text-white w-40 rounded-lg hover:scale-105 duration-300">Continue Shopping</button>
                     </Link>
+                    :<div className="text-center">
+                    <p className="text-xl mt-4">Not Logged In</p>
+                    <button className="mt-2 font-bold bg-cyan-500 w-15 rounded-md text-white" onClick={()=>{
+                        setAuth(null)
+                    }}>Login</button>
+
+                </div>
                     }
                 </div>
 

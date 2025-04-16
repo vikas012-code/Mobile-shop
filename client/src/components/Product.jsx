@@ -10,7 +10,7 @@ import Pink_heart from "../assets/pink_heart.png";
 
 function Product(){
     const navigate=useNavigate()     
-    const {datas,cartItem ,setCartItem,cartQuantity,setCartQuantity,Auth,setAuth,WishListItem,setWishListItem}=useContext(UserContext)
+    const {datas,user,cartItem ,setCartItem,cartQuantity,setCartQuantity,Auth,setAuth,WishListItem,setWishListItem}=useContext(UserContext)
 
     const [quantity,setQuantity]=useState(0)
 
@@ -22,29 +22,50 @@ function Product(){
 
 
     function wishList(data){
-        for(let i=0 ;i<WishListItem.length;i++){ 
-            if(WishListItem[i]?._id===data._id)
-                return Pink_heart
+    
+            for(let i=0 ;i<WishListItem.length;i++){ 
+                if(WishListItem[i]?.product_id===data._id){
+                    return Pink_heart;
+                }
+            }
+            return heart;
         }
-        return heart
-    }
-
-    function addingWishList(data){
-        for(let i=0 ;i<WishListItem.length;i++){ 
-            if(WishListItem[i]?.id===data.id)
-                {
-                    setWishListItem(WishListItem.filter(item=> item.id!==data.id))
-                return
-                } 
+        async function deletingWishList(data) {
+            console.log("deleting wiushlist")
+            const res= await fetch("http://localhost:8000/wishlists/unsaveWishlist",{
+                method: "DELETE",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ 
+                    user_id: user._id,
+                    product_id: data._id 
+                }),
+              })
+            console.log(res.json())
         }
-        setWishListItem([...WishListItem,data])
-    }
+    
+        async function addingWishList(data){
+            const res=await fetch("http://localhost:8000/wishlists",{
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ 
+                    user_id: user._id,
+                    product_id: data._id 
+                }),
+              })
+    
+              console.log(res.json())
+    
+        }
 
 
-    function addData(){
+    function addData(Data){
         if(cartItem.length > 0){
             for(let i=0;i<cartItem.length;i++){
-                if(cartItem[i].Data.id===Data.id){
+                if(cartItem[i].Data._id===Data._id){
                     cartItem[i].quantity+=quantity
                     return
                 }
@@ -60,8 +81,9 @@ function Product(){
         <>
         {
         Data &&
+        
         <div className="bg-white p-5">
-            <div className="flex h-96">
+            <div className={`flex h-96 ${Data.quantity==0&&" opacity-20 "}`}>
 
                 <div className="flex items-center">
 
@@ -69,12 +91,11 @@ function Product(){
 
                     <button className=" w-10 h-10 relative right-5 bottom-40 cursor-pointer hover:scale-115 duration-300"
                         onClick={()=>{
-                            Auth?
-                            addingWishList(Data)
-                            :setAuth(null)
+                            Auth?wishList(Data)===heart? addingWishList(Data) && setWishListItem([...WishListItem, Data]): deletingWishList(Data) && setWishListItem(WishListItem.filter(item=> item.product_id!==Data._id)) : setAuth(null)
+                            
                         }}
                         >
-                       <img className="w-10 h-9" src={wishList(Data)} />
+                       <img className="min-w-10" src={wishList(Data)} />
                     </button>
 
                     <div className=" ml-10 w-[50vw] -mt-20 ">
@@ -113,6 +134,8 @@ function Product(){
                                 {quantity}
                             </p>
                             <button className=" w-8 h-8 active:bg-gray-200 " onClick={()=>{
+                                quantity<Data.quantity
+                                &&
                                 setQuantity(quantity+1)
                             }}>
                                 +
@@ -124,7 +147,7 @@ function Product(){
                             <button className=" border rounded-lg bg-blue-600 text-white h-10 my-2 hover:bg-white hover:text-blue-600 hover:scale-105 duration-300"  onClick={()=>
                             {
                             Auth?
-                            quantity > 0 ? setCartQuantity(cartQuantity+quantity) || addData()
+                            quantity > 0 ? setCartQuantity(cartQuantity+quantity) || addData(Data)
                              ||
                              setQuantity(0)
                              ||
@@ -137,7 +160,7 @@ function Product(){
                             <button className=" border rounded-lg bg-white text-blue-600 h-10 my-2 hover:scale-105 duration-300" onClick={()=>
                             {
                             Auth?
-                            quantity > 0 && setCartQuantity(cartQuantity+quantity) || addData()
+                            quantity > 0 && setCartQuantity(cartQuantity+quantity) || addData(Data)
                             ||
                             setQuantity(0)
                             :setAuth(null);

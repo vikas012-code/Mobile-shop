@@ -3,7 +3,7 @@ import { UserContext } from "./context"
 import { useNavigate } from "react-router-dom"
 
 function PaymentDetails(){
-    let {ShippingAddress,ProgressBar,setProgressBar,cartItem,cartQuantity,total,setTotal,Ordered,setOrdered,setCartItem,setCartQuantity}=useContext(UserContext)
+    let {user,ShippingAddress,ProgressBar,setProgressBar,cartItem,cartQuantity,total,setTotal,Ordered,setOrdered,setCartItem,setCartQuantity}=useContext(UserContext)
     
     let totalItem=0;
     
@@ -19,16 +19,82 @@ function PaymentDetails(){
     
     const navigate=useNavigate()
 
+    // const res= await fetch("http://localhost:8000/wishlists/unsaveWishlist",{
+    //     method: "DELETE",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({ 
+    //         user_id: user._id,
+    //         product_id: data._id 
+    //     }),
+    //   })
+    async function orderhandler(){
+        let respose=[]
+        try {
+            for(let i=0;i<cartItem.length;i++){
+                respose = await fetch("http://localhost:8000/orders",{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        user_id: user._id,
+                        product_id: cartItem[i]?.Data._id,
+                        quantity: cartItem[i]?.quantity
+                    })
+        
+                })
+            }
+            let res= await respose.json()
+            
+        } catch (error) {
+            console.log(error)
+        }
+        try {
+            for(let i=0;i<cartItem.length;i++){
+                respose = await fetch("http://localhost:8000/products/UpdateQuantityByOrder",{
+                    method: "PATCH",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        _id: cartItem[i]?.Data._id,
+                        quantity: cartItem[i]?.quantity
+                    })
+        
+                })
+            }
+            let res= await respose.json()
+            
+            return true
+        } catch (error) {
+            console.log(error)
+            return false
+        }
+    }
+
+
+
     console.log(Ordered)
+    console.log(cartItem)
+
     return<>
             <div className="flex flex-col items-center mt-10">
                 <p className="text-4xl mb-5">Payment Method</p>
                 <form onSubmit={(e)=>{
+                        const result=orderhandler()
+                        result?
                         setOrdered([...Ordered,...cartItem])
+                        ||
                         setCartItem([])
+                        ||
                         setCartQuantity(0)
+                        ||
                         navigate("/checkout/OrderedPlaced")
+                        ||
                         setProgressBar(ProgressBar+1)
+                        :console.error("error while ordering product")
                     }}>
                 <div className="  shadow-lg shadow-gray-500 w-[60vw] h-[60vw] flex p-5 justify-between rounded-xl mb-5">
 
