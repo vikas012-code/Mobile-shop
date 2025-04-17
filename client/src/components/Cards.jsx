@@ -8,7 +8,7 @@ import { UserContext } from "./context.js";
 
 function Cards({data}){
     
-    const {WishListItem,setWishListItem ,Auth,setAuth,user,setUser}=useContext(UserContext)
+    const {WishListItem,setWishListItem ,Auth,setAuth,user}=useContext(UserContext)
 
 
     function wishList(data){
@@ -77,7 +77,7 @@ function Cards({data}){
                 Auth?wishList(data)===heart? addingWishList(data) && setWishListItem([...WishListItem, data]): deletingWishList(data) && setWishListItem(WishListItem.filter(item=> item.product_id!==data._id)) : setAuth(null)
             }}
             >
-        <img className="w-6 h-6" src={wishList(data)} />
+        <img className="w-6 h-6" src={Auth?wishList(data):heart} />
         </button>
     </div>
     </>

@@ -93,7 +93,7 @@ function AdminProduct() {
                             brand: "",
                             model: "",
                             color: "",
-                            category: "",
+                            category: "mobile",
                             discount:0,
                             quantity:0
                             })
@@ -168,14 +168,12 @@ function AdminProduct() {
                                 <div>
                                     <label className="font-bold" htmlFor="">category<span className="text-red-600">*</span></label>
                                 </div>
-                                <select className="border border-gray-400 p-4 h-10 rounded-lg" name="" id="" value={productDetail.category}
+                                <select className="border border-gray-400 h-10  rounded-lg"  value={productDetail.category}
                                 onChange={(e)=>{
-                                    setPoductDetail({...productDetail,category:e.target.value})
-                                }}
-                                >
-                                    <option value="mobile">Mobile</option>
-                                    <option value="audio">Audio</option>
-                                    <option value="gaming">Gaming</option>
+                                    setPoductDetail({...productDetail,category:e.target.value}) }}>
+                                    <option value="mobile">mobile</option>
+                                    <option value="audio">audio</option>
+                                    <option value="gaming">gaming</option>
                                     <option value="TV">TV</option>
                                 </select>
                                 <br />

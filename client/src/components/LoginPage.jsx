@@ -2,6 +2,8 @@ import CryptoJS from "crypto-js"
 import { useContext, useState } from "react";
 import { UserContext } from "./context";
 import cancel_img from "../assets/cancel.png"
+import Cookies from 'js-cookie'
+
 function LoginPage(){
 
     let _key = "secret_key"
@@ -87,6 +89,12 @@ function LoginPage(){
                             Password:""
                         })
                     setAuth(res[0]?.name)
+                    Cookies.set('UserAuth', JSON.stringify({
+                        _id:res[0]?._id,
+                        UserName:res[0]?.name,
+                        Email:res[0]?.email,
+                        Password:res[0]?.password,}
+                    ,{ expires: 1 }))
                 }
                 else{
                     setPassCorrect(false)

@@ -12,7 +12,7 @@ import heart from "../assets/heart.png";
 
 
 function Navbar() {
-    const {searchItem,setSearchItem,cartQuantity,Auth,section,setSection}=useContext(UserContext);
+    const {searchItem,setSearchItem,cartQuantity,Auth,setSection}=useContext(UserContext);
     const navigate=useNavigate()
 
     const handleSubmit=(e)=>{

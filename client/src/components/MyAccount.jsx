@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context";
 // import Datas from "./datas";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 function MyAccount(){
     // const data=[]
@@ -10,7 +11,7 @@ function MyAccount(){
     // data.push(Datas[2])
     // data.push(Datas[3])
     
-    const{user,datas,ShippingAddress,setShippingAddress,Auth,setAuth,section,setSection,Ordered,WishListItem}=useContext(UserContext)
+    const{user,datas,ShippingAddress,setShippingAddress,Auth,setAuth,section,setSection,Ordered,WishListItem,setWishListItem}=useContext(UserContext)
     
     
     const [wishListdetails,setWishListdetails]=useState([])
@@ -19,7 +20,13 @@ function MyAccount(){
     //     "this is a different string",
     // ])
 
+    const navigete=useNavigate()
+    if(!wishListdetails[0]){
+        navigete("/")
+    }
+
     const [orderDetails,setOrderDetails]=useState([])
+
     function wishlistadding(data){
         setWishListdetails((previousData)=>([...previousData,datas.filter( item => item._id===data.product_id)[0]]))
         
@@ -112,11 +119,11 @@ function MyAccount(){
                     <h3 className="text-lg font-bold">Products</h3>
                 <div className="flex justify-center flex-wrap p-2 gap-2 -ml-3 ">
                 {
-                 Auth?   WishListItem.length>0?wishListdetails.map((item,i)=>
-                        <Link key={i} className="shadow w-25 h-35 mx-1" to={`/product/${item._id}`}>
-                            <img className=" h-25 object-contain" src={item.image} alt="" />
-                            <p className="text-xs truncate">{item.title}</p>
-                            <p className="text-sm font-bold">₹{item.price}</p>
+                 Auth? WishListItem?.length>0?wishListdetails?.map((item,i)=>
+                        <Link key={i} className="shadow w-25 h-35 mx-1" to={`/product/${item?._id}`}>
+                            <img className=" h-25 object-contain" src={item?.image} alt="" />
+                            <p className="text-xs truncate">{item?.title}</p>
+                            <p className="text-sm font-bold">₹{item?.price}</p>
                         </Link>
                     )
                     :
@@ -179,6 +186,8 @@ function MyAccount(){
         Auth &&
         <button onClick={()=>{
             setAuth(null)
+            ||
+            Cookies.remove("UserAuth")
         }} className=" bg-blue-600 text-white w-30 rounded-md mt-4 mb-4">
             Logout</button>
     }
