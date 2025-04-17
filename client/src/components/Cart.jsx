@@ -10,6 +10,10 @@ function Cart(){
 
 
     const items=cartItem;
+    console.log(items)
+    if(items.quantity<=0){
+
+    }
 
 
     items?.map((item)=>{
@@ -43,7 +47,7 @@ function Cart(){
                 <hr className="border-b-2 border-black" />
 
             {items.map((item)=>( 
-                 
+            item.quantity>0&&
             <div className="" key={item?.Data._id}>
             <ul className="flex justify-between items-center pb-3 p-2 ">
                 <li><img className="min-w-20 h-20" src={item?.Data.image} alt="" /></li>
@@ -52,7 +56,7 @@ function Cart(){
 
                 <li className="absolute right-[15vw] pt-2 flex items-center">
                     <div className=" border border-gray-300  flex gap-4  items-center min-w-26">
-                    <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{ item.quantity-=1 ; setCartQuantity(item.quantity) }}>-</button> 
+                    <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{item.quantity-=1 ; setCartQuantity(item.quantity) }}>-</button> 
 
                     <p className="">{item.quantity} </p>
                     

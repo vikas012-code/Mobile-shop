@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
 // import datas from "./datas.js"
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { UserContext } from "./context.js";
 import Cards from "./Cards.jsx";
 
@@ -18,7 +18,13 @@ function Body(){
     useEffect(()=>{
         setDatas(datas)
     },[])
-    
+
+
+    const navigate=useNavigate()
+
+    if(Datas.length<=0){
+        navigate("/")
+    }
 
     let filterData = Datas?.filter((data)=> category? data.category.includes(category) : (data.title).toLowerCase().includes(searchItem.toLowerCase()))
     return (<>

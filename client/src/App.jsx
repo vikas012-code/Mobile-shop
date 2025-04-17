@@ -7,7 +7,7 @@ import { UserContext } from "./components/context"
 import { useEffect, useState } from "react"
 import LoginPage from "./components/LoginPage"
 import AdminPanel from "./components/AdminPanel"
-
+import Cookies from 'js-cookie'
 
 
 function App() {
@@ -25,16 +25,7 @@ function App() {
 
   const [total,setTotal]=useState(0)
 
-  const [ShippingAddress,setShippingAddress]=useState({
-    fullName:"vikas",
-    StreetAddress:"524 new jawahar nagar",
-    Floor:"",
-    State:"punjab",
-    City:"jalandhar",
-    Pincode:1144,
-    Email:"vikas@gmail.com",
-    PhoneNumber:778899,
-})
+  
 const [ProgressBar,setProgressBar]=useState(1)
 
 const [Auth,setAuth]=useState(null)
@@ -51,45 +42,89 @@ const [user,setUser]=useState({
   Password:"",
   _id:""
 })
+const cookie=Cookies.get("UserAuth")
+
+//console.log(CookieAuth)
+
+useEffect(()=>{
+  if(cookie){
+    const CookieAuth=JSON.parse(cookie)
+    setUser({
+    ...user,
+    UserName:CookieAuth.UserName,
+    Email:CookieAuth.Email,
+    Password:CookieAuth.Password,
+    _id:CookieAuth._id
+    })
+  
+    setAuth(CookieAuth.UserName)
+  }
+}
+,[Auth])
 
 //admin@gmail.com
 //admin
 
-useEffect(()=>{
-  fetch("http://localhost:8000/products")
-  .then((res)=> res.json())
-  .then((res)=>setDatas(res))
-  .catch((err)=>{console.log(err)})
-},[Ordered])
+
+const [ShippingAddress,setShippingAddress]=useState({
+  fullName:"",
+  StreetAddress:"",
+  Floor:"",
+  State:"",
+  City:"",
+  Pincode:null,
+  Email:"",
+  PhoneNumber:null,
+})
+
+
+
+  useEffect(()=>{
+    fetch("http://localhost:8000/products")
+    .then((res)=> res.json())
+    .then((res)=>setDatas(res))
+    .catch((err)=>{console.log(err)})
+  },[Ordered])
+
+
 
 
 useEffect(() =>{
   //console.log("wishlist calling..")
-  try {
-    fetch("http://localhost:8000/wishlists/byId",
-      {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ 
-          _id: user._id 
-      }),
-    })
-    .then((respone) => respone.json())
-    .then((res)=> {
-        //console.log(res) 
-      return setWishListItem(res)})
-    .catch((err)=>{console.log(err)})
-  } catch (error) {
-    console.log(error)
+  if(user._id){
+    try {
+      fetch("http://localhost:8000/wishlists/byId",
+        {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ 
+            _id: user._id 
+        }),
+      })
+      .then((respone) => respone.json())
+      .then((res)=> {
+          //console.log(res) 
+        return setWishListItem(res)})
+      .catch((err)=>{console.log(err)})
+    } catch (error) {
+      console.log(error)
+    }
   }
-  
+  if(user.UserName){
+    setShippingAddress({
+      ...ShippingAddress,
+      fullName:user.UserName,
+      Email:user.Email
+    })
+  }
 },
 [user,WishListItem.length])
 
 useEffect(() =>{
   //console.log("order calling..")
+  if(user._id){
   try {
     fetch("http://localhost:8000/orders/byId",
       {
@@ -110,6 +145,7 @@ useEffect(() =>{
   } catch (error) {
     console.log(error)
   }
+}
 },
 [user,Ordered.length])
 

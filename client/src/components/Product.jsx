@@ -95,7 +95,7 @@ function Product(){
                             
                         }}
                         >
-                       <img className="min-w-10" src={wishList(Data)} />
+                       <img className="min-w-10" src={Auth?wishList(Data):heart} />
                     </button>
 
                     <div className=" ml-10 w-[50vw] -mt-20 ">
