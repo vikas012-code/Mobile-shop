@@ -1,35 +1,79 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./context";
 import { Link } from "react-router-dom";
 
 function Cart(){
-    const {cartItem,cartQuantity,setCartQuantity,total,setTotal}=useContext(UserContext);
+    const {cartItem,setCartItem,cartQuantity,setCartQuantity,total,setTotal}=useContext(UserContext);
 
 
-    let totalItem=0;
+    let totalItem=0; 
+    const [cartrefrese,setCartrefrese]=useState(0)
+    
+    console.log(cartItem)
 
-
-    const items=cartItem;
-    console.log(items)
-    if(items.quantity<=0){
-
-    }
-
-
-    items?.map((item)=>{
+    cartItem?.map((item)=>{
         totalItem=totalItem+item.quantity*item?.Data.price;
     })
 
 
     useEffect(()=>{
         setTotal(totalItem)
+        setCartItem(cartItem.filter(item=> !item.quantity<=0))
+        if(cartItem.length>0){
+            localStorage.setItem("cartData",JSON.stringify(cartItem))
+        }
+        // if(cartItem.length>0){
+        //     localStorage.setItem("cartData",JSON.stringify(cartItem))
+        // }
+       
+    
+        // setCartItem(cartItem.filter(item=> !item.quantity<=0))
+
+        // setCartQuantity(0)
+
+        // cartItem?.map((item)=>{
+        //     setCartQuantity(cartQuantity=> cartQuantity+item.quantity)
+        // })
+
+        
+
     },[totalItem])
+
+    function CartDataAdding(){
+        setTotal(prev=> prev+totalItem)
+        
+        setCartItem(cartItem.filter(item=> !item.quantity<=0))
+
+        setCartQuantity(0)
+
+        cartItem?.map((item)=>{
+            setCartQuantity(cartQuantity=> cartQuantity+item.quantity)
+        })
+
+        cartItem?.map((item)=>{
+            totalItem=totalItem+item.quantity*item?.Data.price  
+        })
+        for(let i=0;i<cartItem.length;i++){
+            totalItem=totalItem+cartItem[i].quantity*cartItem[i].Data.price 
+        }
+        if(cartItem[0].quantity<=0){
+            localStorage.removeItem("cartData")
+        }
+        else{
+            localStorage.setItem("cartData",JSON.stringify(cartItem))
+
+        }
+        
+    }
 
 
     return(
         <>
         <div className="bg-white min-h-[50vh]">
-            <h3 className="text-center mb-8 text-2xl font-bold">Check Out</h3>
+            {
+                cartItem.length>0?
+                <>
+                <h3 className="text-center mb-8 text-2xl font-bold">Check Out</h3>
                 <div className=" flex justify-evenly text-xl font-bold">
                     <p className="relative right-[45vw]">
                         Title
@@ -46,7 +90,7 @@ function Cart(){
                 </div>
                 <hr className="border-b-2 border-black" />
 
-            {items.map((item)=>( 
+            {cartItem.map((item)=>( 
             item.quantity>0&&
             <div className="" key={item?.Data._id}>
             <ul className="flex justify-between items-center pb-3 p-2 ">
@@ -56,13 +100,22 @@ function Cart(){
 
                 <li className="absolute right-[15vw] pt-2 flex items-center">
                     <div className=" border border-gray-300  flex gap-4  items-center min-w-26">
-                    <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{item.quantity-=1 ; setCartQuantity(item.quantity) }}>-</button> 
-
+                    {item.quantity>0 &&     
+                    <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{ 
+                        item.quantity-=1 
+                        CartDataAdding()
+                        // setCartrefrese(prev=>prev-item.quantity)
+                    }}>-</button> 
+                    }
                     <p className="">{item.quantity} </p>
                     
                     {item.quantity<item.Data.quantity
                     &&
-                    <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{item.quantity+=1 ; setCartQuantity(item.quantity)}}>+</button>
+                    <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{
+                        item.quantity+=1 
+                        CartDataAdding()
+                        //setCartrefrese(prev=>prev+item.quantity)
+                    }}>+</button>
                     }
                     </div>
                 </li>
@@ -81,9 +134,15 @@ function Cart(){
                 <p className="mr-[4vw] flex"><img className="h-4 mt-0.5" src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>{total?total:""}</p>
                 </div>
                 <div className="flex justify-end mt-5 ">
-                {cartQuantity>0 && <Link to="/checkout" className="mr-2 bg-blue-600 text-white p-2  rounded-md hover:text-blue-600 hover:bg-white hover:scale-105 hover:border duration-300">Processed To Checkout</Link> }
+                <Link to="/checkout" className="mr-2 bg-blue-600 text-white p-2  rounded-md hover:text-blue-600 hover:bg-white hover:scale-105 hover:border duration-300">Processed To Checkout</Link>
                 </div>
                 </div>
+            }
+            </>
+            :
+            <div className="flex flex-col items-center">
+                <img src="https://i.pinimg.com/originals/5a/d0/47/5ad047a18772cf0488a908d98942f9bf.gif" alt="" />
+            </div>
             }
         </div>
         </>

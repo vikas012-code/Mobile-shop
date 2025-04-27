@@ -38,13 +38,14 @@ const [WishListItem,setWishListItem]=useState([])
 
 const [user,setUser]=useState({
   UserName:"",
-  Email:"",
-  Password:"",
+  Email:"admin@gmail.com",
+  Password:"admin",
   _id:""
 })
 const cookie=Cookies.get("UserAuth")
 
 //console.log(CookieAuth)
+
 
 useEffect(()=>{
   if(cookie){
@@ -148,6 +149,20 @@ useEffect(() =>{
 }
 },
 [user,Ordered.length])
+
+const cartData=JSON.parse(localStorage.getItem("cartData"))
+
+useEffect(()=>{
+        if(cartData)
+            {
+            setCartItem([...cartItem,...cartData])
+            }
+        if(cartItem.length>0){
+            localStorage.setItem("cartData",JSON.stringify(cartItem))
+        }
+    },[])
+
+
 
 
 const value={datas,searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar,
