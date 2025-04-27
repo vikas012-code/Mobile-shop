@@ -19,7 +19,7 @@ function HeroPage() {
               onClick={() => setActiveIndex(i)}
             />
           ))}
-        </div>
+        </div> 
       )}
       autoplay={true}
       autoplayDelay={2000}
@@ -54,6 +54,7 @@ function HeroPage() {
           <Link to={"/body/audio"} className="text-xs sm:text-sm bg-blue-500 rounded-2xl p-2 text-white mr-5">Shop Now</Link>
         </div>
       </div>
+
       </Carousel>
       
       </>

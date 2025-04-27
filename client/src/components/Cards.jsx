@@ -59,11 +59,11 @@ function Cards({data}){
     }
     return (<>
                              
-        <div className={`w-64 h-82 m-4 rounded-lg shadow-lg bg-white ${data?.quantity<=0&&" opacity-20"}`} key={data?._id}>
+        <div className={`w-64 h-86 m-4 rounded-lg shadow-lg overflow-hidden bg-white ${data?.quantity<=0&&" opacity-20"}`} key={data?._id}>
         <Link className="" to={`/product/${data?._id}`}>
             <img className="h-64 w-64 object-contain hover:scale-105 duration-300 hover:-translate-y-2 "  src={data?.image} alt={data?.title} />
-            <div className=" bg-gray-100 pl-2 ">
-                <p className="min-h-12 hover:text-amber-700 text-gray-800  font-medium">{truncateString(data?.title,45)}</p>
+            <div className=" bg-gray-100 p-3 ">
+                <p className="min-h-12 hover:text-black text-gray-600  font-medium">{truncateString(data?.title,45)}</p>
                 <div className="flex items-center">
                 <p className="flex items-center w-16 font-bold"><img className="h-4" src="https://cdn3.iconfinder.com/data/icons/inficons-currency-set/512/rupee-512.png"/>{data?.price}</p>
                 {data?.discount>0 && <p className="ml-3 text-sm text-gray-400  line-through">₹{data?.discount > 0 && (data?.price)+((data?.price)*data?.discount/100)}</p>}
@@ -71,16 +71,15 @@ function Cards({data}){
                 </div>
             </div>
         </Link>
-        <button className=" relative bottom-78 left-57 cursor-pointer hover:scale-115 duration-300"
+        <button className=" relative bottom-86 left-56 cursor-pointer hover:scale-115 duration-300"
             onClick={()=>{
-                
                 Auth?wishList(data)===heart? addingWishList(data) && setWishListItem([...WishListItem, data]): deletingWishList(data) && setWishListItem(WishListItem.filter(item=> item.product_id!==data._id)) : setAuth(null)
             }}
             >
         <img className="w-6 h-6" src={Auth?wishList(data):heart} />
         </button>
     </div>
-    </>
+    </> 
     )
 }
 

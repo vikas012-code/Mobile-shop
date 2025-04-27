@@ -79,8 +79,9 @@ function AdminPanel(){
                             <img className="w-10" src={notification} alt="" />
                         </li>
                         <li className="flex flex-col items-center">
-                            <img className="w-8" src={account_icon} alt="" />
-                            <p>Admin</p>
+                            
+                            <button className=" peer "> <img className="w-8 peer" src={account_icon} alt="" />Admin</button>
+                            <button  className=" invisible peer-focus:visible text-white bg-cyan-500 px-1 rounded-lg">LogOut</button>
                         </li>
                     </ul>
                 </nav>

@@ -12,7 +12,7 @@ function Product(){
     const navigate=useNavigate()     
     const {datas,user,cartItem ,setCartItem,cartQuantity,setCartQuantity,Auth,setAuth,WishListItem,setWishListItem}=useContext(UserContext)
 
-    const [quantity,setQuantity]=useState(0)
+    const [quantity,setQuantity]=useState(1)
 
     let {_id} = useParams()
 
@@ -29,7 +29,7 @@ function Product(){
                 }
             }
             return heart;
-        }
+    }
         async function deletingWishList(data) {
             console.log("deleting wiushlist")
             const res= await fetch("http://localhost:8000/wishlists/unsaveWishlist",{
@@ -125,7 +125,7 @@ function Product(){
 
                         <div className="flex justify-center items-center">
                             <div className=" border border-gray-300  flex gap-4 justify-center items-center">
-                            <button className=" w-8 h-8  active:bg-gray-200" onClick={()=>{
+                            <button className={` w-8 h-8  active:bg-gray-200 ${quantity<=1?" pointer-events-none opacity-20":""}`} onClick={()=>{
                                 quantity > 0 && setQuantity(quantity-1)
                             }}>
                                 -
@@ -149,7 +149,7 @@ function Product(){
                             Auth?
                             quantity > 0 ? setCartQuantity(cartQuantity+quantity) || addData(Data)
                              ||
-                             setQuantity(0)
+                             setQuantity(1)
                              ||
                              navigate("/checkout")
                              :""                        
@@ -162,7 +162,7 @@ function Product(){
                             Auth?
                             quantity > 0 && setCartQuantity(cartQuantity+quantity) || addData(Data)
                             ||
-                            setQuantity(0)
+                            setQuantity(1)
                             :setAuth(null);
                             }}
                             >Add to cart</button>

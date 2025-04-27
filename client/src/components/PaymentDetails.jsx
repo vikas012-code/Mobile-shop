@@ -93,6 +93,8 @@ function PaymentDetails(){
                         ||
                         navigate("/checkout/OrderedPlaced")
                         ||
+                        localStorage.removeItem("cartData")
+                        ||
                         setProgressBar(ProgressBar+1)
                         :console.error("error while ordering product")
                     }}>
