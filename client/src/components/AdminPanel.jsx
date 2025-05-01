@@ -1,11 +1,12 @@
 import smartphone from "../assets/smartphone.png"
 import account_icon from "../assets/account_icon.png"
 import notification from "../assets/notification.png"
-import Dashboard from "./Dashboard"
+import Dashboard from "./AdminDashboard"
 import AdminProduct from "./AdminProduct"
 import AdminOrder from "./AdminOrder"
 import { useContext, useEffect, useState } from 'react';
 import { UserContext } from './context';
+import AdminUser from "./AdminUser"
 
 
 function AdminPanel(){
@@ -24,7 +25,6 @@ function AdminPanel(){
         .then((res)=> res.json())
         .then((res)=> setTotalOrder(res))
         .catch((err)=> console.log(err))
-        
     },[])
 
 
@@ -70,6 +70,9 @@ function AdminPanel(){
                     <button className={`my-2  p-2 rounded-md flex ${asidePage==="order"&&"bg-cyan-600 text-white"}`} onClick={()=>{
                         setAsidePage("order")
                     }}>Orders lists</button>
+                    <button className={`my-2  p-2 rounded-md flex ${asidePage==="users"&&"bg-cyan-600 text-white"}`} onClick={()=>{
+                        setAsidePage("users")
+                    }}>Users</button>
                 </div>
             </aside>
             <div className="w-[84vw]  bg-gray-100">
@@ -88,9 +91,12 @@ function AdminPanel(){
                 {
                     asidePage==="dashboard" && <Dashboard props={[totalOrder,totalOrderDetails,total]}/>
                     ||
-                    asidePage==="product" && <AdminProduct/>
+                    asidePage==="product" && <AdminProduct />
                     ||
                     asidePage==="order" && <AdminOrder props={[totalOrder,totalOrderDetails,total]}/>
+                    ||
+                    asidePage==="users" && <AdminUser props={[totalOrder,totalOrderDetails,total]}/>
+
                 }
             </div>
         </div>

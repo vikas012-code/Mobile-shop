@@ -36,3 +36,16 @@ export async function GetUserByEmail(req ,res) {
   res.json(UsersDetail)
 }
 
+export async function DeleteUserById(req ,res) {
+  const {_id}= req.body;
+  try{
+      const result = await Users.deleteOne({_id:_id});
+      console.log(result)
+      res.status(200).send(result);
+    }
+    catch(err){
+      console.log(err)
+      res.status(500).json(err);
+    }
+}
+

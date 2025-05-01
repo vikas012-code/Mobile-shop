@@ -2,11 +2,12 @@ import { useContext, useState } from "react";
 import { UserContext } from "./context";
 
 function AdminProduct() {
-    const {datas}=useContext(UserContext)
+    const {datas,refresh,setRefresh}=useContext(UserContext)
+    
 
     async function AddQuantity(data,quantity){
         try {
-            respose = await fetch("http://localhost:8000/products/UpdateQuantityByAdding",{
+            let respose = await fetch("http://localhost:8000/products/UpdateQuantityByAdding",{
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -15,10 +16,10 @@ function AdminProduct() {
                     _id:data?._id,
                     quantity: quantity
                 })
-    
             })
-        let res= await respose.json()
+        let res=await respose.json()
         console.log(res)
+        setRefresh(refresh+1)
         } catch (error) {
             console.log(error)
         }
@@ -65,7 +66,9 @@ function AdminProduct() {
             })
         let res= await respose.json()
         console.log(res)
+        setRefresh(refresh+1)
         return true
+        
         } catch (error) {
             console.log(error)
             return false
@@ -230,6 +233,8 @@ function AdminProduct() {
                                 <p className=" w-[12%]">Total Quantity</p>
                             </div>
                         </div>
+
+
                         <div className="w-[100%] flex flex-col">
                             {
                                 datas.map((item)=>(

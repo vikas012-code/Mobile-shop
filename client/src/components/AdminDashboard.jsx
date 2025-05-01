@@ -15,34 +15,7 @@ function Dashboard({props}){
 
     const [orderDetails,setOrderDetails]=useState([])
 
-    
-    
 
-
-    // useEffect(() =>{
-    //     //console.log("wishlist calling..")
-    //     try {
-    //       fetch("http://localhost:8000/wishlists/byId",
-    //         {
-    //         method: "POST",
-    //         headers: {
-    //           "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({ 
-    //             _id: user._id 
-    //         }),
-    //       })
-    //       .then((respone) => respone.json())
-    //       .then((res)=> {
-    //           //console.log(res) 
-    //         return setWishListItem(res)})
-    //       .catch((err)=>{console.log(err)})
-    //     } catch (error) {
-    //       console.log(error)
-    //     }
-        
-    //   },
-    //   [user,WishListItem.length])
 
     let todaytotal=0
 
@@ -51,7 +24,6 @@ function Dashboard({props}){
         .then((res)=> res.json())
         .then((res)=> setRecentOrder(res))
         .catch((err)=> console.log(err))
-        
     },[])
 
 

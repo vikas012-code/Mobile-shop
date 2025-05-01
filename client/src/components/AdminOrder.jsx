@@ -12,24 +12,6 @@ function AdminOrder({props}) {
                         <div className=" border-b-2 border-gray-300 w-[90%] py-4">
                             <h3 className="text-2xl font-bold ">All Recent Purchases</h3>
                         </div>
-                        {/* <div className="flex w-[90%] ml-10  gap-20 opacity-60 border-b-2 border-gray-300 py-4">
-                            <p>Product</p>
-                            <p>Order ID</p>
-                            <p>Date</p>
-                            <p>Customer Name</p>
-                            <p>Amount</p>
-                        </div>
-                        {
-                            data.map(()=>(
-                                <div className="flex w-[90%] ml-10  gap-20  border-b-2 border-gray-200 py-4">
-                                    <p>Product </p>
-                                    <p>#223365</p>
-                                    <p>13/04/2025</p>
-                                    <p>vikas</p>
-                                    <p>₹1200</p>
-                                </div>
-                            ))
-                        } */}
                         <table className="w-[90%] text-center">
                             <thead className="border-b-2 border-gray-300 text-xl opacity-40">
                                 <tr className="h-20 flex justify-between items-center">
@@ -52,7 +34,6 @@ function AdminOrder({props}) {
                                             <td className="-ml-15"><p>{datas.data.quantity}</p></td>
                                             <td><p className='w-20 h-10 text-wrap truncate'>#{datas.data._id}</p></td>
                                             <td><p className='w-20 h-10 text-wrap truncate'>{datas.data.createdAt}</p></td>
-                                            {/* <td><p className='w-20 h-10 text-wrap truncate mr-6'>vikas</p></td> */}
                                             <td><p className='w-20 h-10 text-wrap truncate'>#{datas.data.user_id}</p></td>
                                             <td>₹{datas.item.price*datas.data.quantity}</td>
                                          </tr>
@@ -61,7 +42,7 @@ function AdminOrder({props}) {
                             </tbody>
                         </table>
                     </div>
-                </div>
+            </div>
     )
 }
 
