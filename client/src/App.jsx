@@ -36,6 +36,9 @@ const [section,setSection]=useState("myaccount")
 
 const [WishListItem,setWishListItem]=useState([])
 
+const [refresh,setRefresh]=useState(0)
+
+
 const [user,setUser]=useState({
   UserName:"",
   Email:"admin@gmail.com",
@@ -43,6 +46,10 @@ const [user,setUser]=useState({
   _id:""
 })
 const cookie=Cookies.get("UserAuth")
+
+
+//admin@gmail.com
+//admin
 
 //console.log(CookieAuth)
 
@@ -85,7 +92,7 @@ const [ShippingAddress,setShippingAddress]=useState({
     .then((res)=> res.json())
     .then((res)=>setDatas(res))
     .catch((err)=>{console.log(err)})
-  },[Ordered])
+  },[Ordered,refresh])
 
 
 
@@ -166,7 +173,7 @@ useEffect(()=>{
 
 
 const value={datas,searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar,
-  Auth,setAuth,Ordered,setOrdered,WishListItem,setWishListItem,user,setUser,section,setSection}
+  Auth,setAuth,Ordered,setOrdered,WishListItem,setWishListItem,user,setUser,section,setSection,refresh,setRefresh}
 
   
 
@@ -193,17 +200,6 @@ const value={datas,searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,s
       )
 
   }
-
-  // return (
-  //   <UserContext.Provider value={value}>
-  //   <div className={`${Auth===null?" pointer-events-none opacity-60":""}`}>
-  //     <Navbar/>
-  //     <Outlet/>
-  //     <Footer/>
-  //   </div>
-  //   <LoginPage/>
-  //   </UserContext.Provider>
-  // )
 }
 
 export default App
