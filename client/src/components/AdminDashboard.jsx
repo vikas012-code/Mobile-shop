@@ -93,7 +93,25 @@ function Dashboard({props}){
             addingbestsaller(best4[i])
         }}
 
-        
+        function graphValue(){
+            let graphVal=[0]
+            for(let i=0;i<orderDetails.length;i++){
+                graphVal.push(orderDetails[i].item.price*orderDetails[i].data.quantity)
+            }
+            graphVal.length>20?graphVal.length=20:"";
+
+            return graphVal
+        }
+
+        // function graphValue(){
+        //     let graphVal=[0]
+        //     for(let i=0;i<totalOrderDetails.length;i++){
+        //         graphVal.push(totalOrderDetails[i].item.price*totalOrderDetails[i].data.quantity)
+        //     }
+        //     graphVal.length>20?graphVal.length=20:"";
+
+        //     return graphVal
+        // }
     
     return(
         <>
@@ -164,10 +182,11 @@ function Dashboard({props}){
                         <h3 className="text-2xl font-bold ">Today's Sales Graph</h3>
                     </div>
                     <LineChart
-                        xAxis={[{ data: [1, 2, 3, 5, 8, 10, 11, 12, 13, 14, 15 ,16 ,17 ,18 ,19 ,20 ,21 ,22 ,23 ,24] }]}
+                        xAxis={[{ data: [0,1, 2, 3, 5, 8, 10, 11, 12, 13, 14, 15 ,16 ,17 ,18 ,19 ,20 ,22 ,23 ,24] }]}
                         series={[
                             {
-                            data: [100, 250, 400, 1000, 1200, 5000, 5500, 7000, 8500 ,9000 ,9200, 10000, 10500, 11000 ,12000, 13200, 14000 ,14100],
+                            // data: [100, 250, 400, 1000, 1200, 5000, 5500, 7000, 8500 ,9000 ,9200, 10000, 10500, 11000 ,12000, 13200, 14000 ,14100],
+                                data: graphValue()
                             },
                         ]}
                         width={750}

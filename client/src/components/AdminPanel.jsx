@@ -16,7 +16,7 @@ function AdminPanel(){
 
     const [totalOrderDetails,setTotalOrderDetails]=useState([])
 
-    const{datas,user}=useContext(UserContext)
+    const{datas,user,setAuth}=useContext(UserContext)
 
     let total=0
 
@@ -83,8 +83,10 @@ function AdminPanel(){
                         </li>
                         <li className="flex flex-col items-center">
                             
-                            <button className=" peer "> <img className="w-8 peer" src={account_icon} alt="" />Admin</button>
-                            <button  className=" invisible peer-focus:visible text-white bg-cyan-500 px-1 rounded-lg">LogOut</button>
+                            <button className=" peer "> <img className="w-8 peer ml-2" src={account_icon} alt="" /> Admin</button>
+                            <button  className=" invisible peer-focus:visible active:visible ease-linear text-white bg-cyan-500 px-1 rounded-lg" onClick={()=>{
+                                setAuth(null)
+                            }}>LogOut</button>
                         </li>
                     </ul>
                 </nav>

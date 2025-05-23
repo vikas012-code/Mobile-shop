@@ -10,14 +10,12 @@ function AdminUser({props}) {
 
     const [totalusers,setTotalUsers]=useState([])
 
-    
-
-      useEffect(()=>{
-            fetch("http://localhost:8000/user")
-            .then((res)=> res.json())
-            .then((res)=> setTotalUsers(res))
-            .catch((err)=> console.log(err))
-        },[refresh])
+    useEffect(()=>{
+        fetch("http://localhost:8000/user")
+        .then((res)=> res.json())
+        .then((res)=> setTotalUsers(res))
+        .catch((err)=> console.log(err))
+    },[refresh])
     
     function DeleteAccount(UserID){
         try {
@@ -38,6 +36,27 @@ function AdminUser({props}) {
         } catch (error) {
           console.log(error)
         }
+      }
+      //console.log(totalOrderDetails)
+
+      function totalsingleUserOrders(id){
+        let totalsigleOrders=0
+        for(let i=0;i<totalOrderDetails.length;i++){
+            if(totalOrderDetails[i].data.user_id==id){
+                totalsigleOrders=totalsigleOrders+totalOrderDetails[i].data.quantity
+            }
+        }
+        return totalsigleOrders
+      }
+
+      function totalsingleUserOrdersPrice(id){
+        let totalsigleOrdersprice=0
+        for(let i=0;i<totalOrderDetails.length;i++){
+            if(totalOrderDetails[i].data.user_id==id){
+                totalsigleOrdersprice=totalsigleOrdersprice+totalOrderDetails[i].item.price
+            }
+        }
+        return totalsigleOrdersprice
       }
 
     return (
@@ -72,8 +91,8 @@ function AdminUser({props}) {
                                             <div><p className='w-40 h-10 text-wrap truncate'>#{datas._id}</p></div>
                                             <div><p className='w-50  h-10 text-wrap truncate'>{datas.email}</p></div>
                                             <div><p className='w-35 h-10 text-wrap truncate -ml-5'>#{datas.createdAt}</p></div>
-                                            <div><p className='w-45  h-10 text-wrap truncate'>{10}</p></div>
-                                            <div><p className='w-45 pl-5  h-10 text-wrap truncate'>₹{10}</p></div>
+                                            <div><p className='w-45  h-10 text-wrap truncate'>{totalsingleUserOrders(datas._id)}</p></div>
+                                            <div><p className='w-45 pl-5  h-10 text-wrap truncate'>₹{totalsingleUserOrdersPrice(datas._id)}</p></div>
                                             <button className="bg-red-500 text-white rounded-md hover:scale-105 duration-300"
                                             onClick={()=>{
                                                 DeleteAccount(datas._id)
