@@ -13,6 +13,10 @@ import PaymentDetails from './components/PaymentDetails.jsx';
 import OrderedPlaced from './components/OrderPlaced.jsx';
 import LoginPage from './components/LoginPage.jsx';
 import MyAccount from './components/MyAccount.jsx';
+import AboutUsPage from './components/AboutUsPage.jsx';
+import Cancellation from './components/CancellationPage.jsx';
+import PrivacyAndPolicy from './components/PrivacyAndPolicy.jsx';
+import TermsAndCondition from './components/TermsAndCondition.jsx';
 
 const Router = createBrowserRouter([
   {
@@ -67,6 +71,25 @@ const Router = createBrowserRouter([
       ,{
         path:"/account",
         element:<MyAccount/>
+      }
+      ,{
+        path:"/aboutus",
+        element:<AboutUsPage/>
+      }
+      ,
+      {
+        path:"/cancellation",
+        element:<Cancellation/>
+      }
+      ,
+      {
+        path:"/privacyandpolicy",
+        element:<PrivacyAndPolicy/>
+      }
+      ,
+      {
+        path:"/termsandcondition",
+        element:<TermsAndCondition/>
       }
     ]
   }

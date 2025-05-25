@@ -5,20 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie'
 
 function MyAccount(){
-    // const data=[]
-    // data.push(Datas[0])
-    // data.push(Datas[1])
-    // data.push(Datas[2])
-    // data.push(Datas[3])
+   
     
     const{user,datas,ShippingAddress,setShippingAddress,Auth,setAuth,section,setSection,Ordered,WishListItem,setWishListItem}=useContext(UserContext)
     
     
     const [wishListdetails,setWishListdetails]=useState([])
-    // (previousData) => ([
-    //     ...previousData,
-    //     "this is a different string",
-    // ])
 
     const navigete=useNavigate()
     if(!wishListdetails[0]){

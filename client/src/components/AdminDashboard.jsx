@@ -89,7 +89,7 @@ function Dashboard({props}){
        
         if(bestSaller.length<best4.length){
             for(let i=0;i<best4.length;i++){
-            //console.log(Ordered[i])
+            
             addingbestsaller(best4[i])
         }}
 
@@ -137,7 +137,6 @@ function Dashboard({props}){
                         </div>
                         <div className="flex justify-between items-center">
                             <div className="flex items-center">
-                                {/* <img className="w-10 bg-blue-950 p-1 rounded-lg mr-5" src="https://cdn-user-icons.flaticon.com/192011/192011013/1744639304842.svg?token=exp=1744640206~hmac=f7d6b4bd6b271212d7f763cc6d021fe1" alt="" /> */}
                                 <p className="w-10 h-10 bg-blue-950 p-1 rounded-lg mr-5 text-white flex justify-center items-center text-3xl">₹</p>
                                 <p className=" font-bold">₹{total}</p>
                             </div>
@@ -166,7 +165,6 @@ function Dashboard({props}){
                         </div>
                         <div className="flex justify-between items-center">
                             <div className="flex items-center">
-                                {/* <img className="w-10 bg-blue-950 p-1 rounded-lg mr-5" src="https://cdn-user-icons.flaticon.com/192011/192011013/1744639304842.svg?token=exp=1744640206~hmac=f7d6b4bd6b271212d7f763cc6d021fe1" alt="" /> */}
                                 <p className="w-10 h-10 bg-blue-950 p-1 rounded-lg mr-2 text-white flex justify-center items-center text-3xl">₹</p>
                                 <p className=" font-bold text-sm">₹{todaytotal}</p>
                             </div>
