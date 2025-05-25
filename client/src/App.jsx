@@ -41,8 +41,8 @@ const [refresh,setRefresh]=useState(0)
 
 const [user,setUser]=useState({
   UserName:"",
-  Email:"admin@gmail.com",
-  Password:"admin",
+  Email:"",
+  Password:"",
   _id:""
 })
 const cookie=Cookies.get("UserAuth")
@@ -50,8 +50,6 @@ const cookie=Cookies.get("UserAuth")
 
 //admin@gmail.com
 //admin
-
-//console.log(CookieAuth)
 
 
 useEffect(()=>{

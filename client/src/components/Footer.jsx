@@ -38,11 +38,10 @@ function Footer(){
                 <h2 className="text-xl">Services</h2>
                 <hr className=" opacity-60" />
                 <ul className=" list-disc p-5">
-                    <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>About Us</Link></li>
-                    <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>Terms & Conditions</Link></li>
-                    <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>FAQ</Link></li>
-                    <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>Privacy & Policy</Link></li>
-                    <li className=" hover:text-amber-400 duration-300"><Link to={"#"}>Cancellation & Return Policy</Link></li>
+                    <li className=" hover:text-amber-400 duration-300"><Link to={"/aboutus"}>About Us</Link></li>
+                    <li className=" hover:text-amber-400 duration-300"><Link to={"/termsandcondition"}>Terms & Conditions</Link></li>
+                    <li className=" hover:text-amber-400 duration-300"><Link to={"/privacyandpolicy"}>Privacy & Policy</Link></li>
+                    <li className=" hover:text-amber-400 duration-300"><Link to={"/cancellation"}>Cancellation & Return Policy</Link></li>
 
                 </ul>
             </div>

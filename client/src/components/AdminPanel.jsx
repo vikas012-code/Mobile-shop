@@ -16,7 +16,7 @@ function AdminPanel(){
 
     const [totalOrderDetails,setTotalOrderDetails]=useState([])
 
-    const{datas,user,setAuth}=useContext(UserContext)
+    const{datas,setAuth}=useContext(UserContext)
 
     let total=0
 
