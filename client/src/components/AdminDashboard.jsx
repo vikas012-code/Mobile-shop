@@ -52,47 +52,6 @@ function Dashboard({props}){
         }
 
 
-     
-
-        function top4feq(data){
-            // Step 1: Count occurrences
-          const countMap = {};
-          data.forEach(item => {
-            countMap[item.data.product_id] = (countMap[item.data.product_id] || 0) + 1;
-          });
-          
-          // Step 2: Convert to array and sort by count descending
-          const sortedCounts = Object.entries(countMap)
-            .map(([product_id, sales]) => ({ product_id:(product_id), sales }))
-            .sort((a, b) => b.sales - a.sales);
-          
-          // Step 3: Get top 3
-          const top3 = sortedCounts.slice(0, 4);
-          return top3
-          }
-
-        const best4=top4feq(totalOrderDetails)
-
-       
-
-        let bestSaller=[]
-
-        function addingbestsaller(data){
-            for(let i=0;i<datas.length;i++){
-                if(datas[i]._id===data.product_id){
-                    bestSaller.push({product:datas[i] ,sales:data.sales})
-                return
-            }
-        }
-            
-    }
-       
-        if(bestSaller.length<best4.length){
-            for(let i=0;i<best4.length;i++){
-            
-            addingbestsaller(best4[i])
-        }}
-
         function graphValue(){
             let graphVal=[0]
             for(let i=0;i<orderDetails.length;i++){
@@ -175,49 +134,23 @@ function Dashboard({props}){
                 </div>
                 <div className=" mt-10 h-100 flex justify-center  gap-5">
                     
-                    <div className="bg-white w-[61%] rounded-2xl flex flex-col  items-center">
+                    <div className="bg-white w-[92%] rounded-2xl flex flex-col  items-center">
                     <div className=" border-b-2 border-gray-300 w-[90%] py-4">
                         <h3 className="text-2xl font-bold ">Today's Sales Graph</h3>
                     </div>
                     <LineChart
-                        xAxis={[{ data: [0,1, 2, 3, 5, 8, 10, 11, 12, 13, 14, 15 ,16 ,17 ,18 ,19 ,20 ,22 ,23 ,24] }]}
+                        xAxis={[{ data: [0,1, 2, 3, 5, 8, 10,11, 12, 13, 14, 15 ,16 ,17 ,18 ,19 ,20 ,22 ,23 ,24] }]}
                         series={[
                             {
                             // data: [100, 250, 400, 1000, 1200, 5000, 5500, 7000, 8500 ,9000 ,9200, 10000, 10500, 11000 ,12000, 13200, 14000 ,14100],
                                 data: graphValue()
                             },
                         ]}
-                        width={750}
+                        width={950}
                         height={350}
                         />
                     </div>
-                    <div className="bg-white w-[30%] rounded-2xl flex flex-col  items-center">
-                        <div className=" border-b-2 border-gray-300 w-[90%] py-4">
-                            <h3 className="text-2xl font-bold ">Best Seller</h3>
-                        </div>
-                        <div className="w-[90%]">
-                            {
-                                bestSaller.map((item)=>(
-                                    <div key={item.product._id} className="flex justify-between mt-4">
-                                        <div className="flex">
-                                            <div className="w-16 h-16 rounded-lg">
-                                                <img className="w-16 h-16" src={item.product.image} alt="" />
-                                            </div>
-                                            <div className="ml-4 flex flex-col justify-center">
-                                                <p className=" font-bold w-45 h-11 text-wrap truncate">{item.product.title}</p>
-                                                <p className=" opacity-50">₹{item.product.price}</p>
-                                            </div>
-                                        </div>
 
-                                        {/* <div className="flex flex-col justify-center w-30 pl-2">
-                                            <p className=" font-bold">₹{item.product.price*item.sales}</p>
-                                            <p className=" opacity-50">{item.sales}</p>
-                                        </div> */}
-                                </div>
-                                ))
-                            }
-                        </div>
-                    </div>
 
                 </div>
                 <div className="pb-10 mt-10 flex justify-center  gap-5">
