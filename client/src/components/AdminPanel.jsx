@@ -83,7 +83,7 @@ function AdminPanel(){
                         </li>
                         <li className="flex flex-col items-center">
                             
-                            <button className=" peer "> <img className="w-8 peer ml-2" src={account_icon} alt="" /> Admin</button>
+                            <button className=" peer "> <img className="w-8 peer ml-2 mt-5" src={account_icon} alt="" /> Admin</button>
                             <button  className=" invisible peer-focus:visible active:visible ease-linear text-white bg-cyan-500 px-1 rounded-lg" onClick={()=>{
                                 setAuth(null)
                             }}>LogOut</button>
