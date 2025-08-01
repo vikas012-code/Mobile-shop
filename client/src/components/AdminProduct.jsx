@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
 import { UserContext } from "./context";
+import Loading from "./Loading";
 
-function AdminProduct() {
-    const {datas,refresh,setRefresh}=useContext(UserContext)
+function AdminProduct({setProductIsUploading}) {
+    const {datas,setRefresh}=useContext(UserContext)
     
-
     async function AddQuantity(data,quantity){
         try {
-            let respose = await fetch("http://localhost:8000/products/UpdateQuantityByAdding",{
+            let respose = await fetch("https://supamart-v-backend.onrender.com/products/UpdateQuantityByAdding",{
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -19,7 +19,7 @@ function AdminProduct() {
             })
         let res=await respose.json()
         console.log(res)
-        setRefresh(refresh+1)
+        setRefresh(prev=> !prev)
         } catch (error) {
             console.log(error)
         }
@@ -44,8 +44,9 @@ function AdminProduct() {
     })
 
     async function AddNewProduct(){
+        setProductIsUploading(true)
         try {
-            respose = await fetch("http://localhost:8000/products",{
+            respose = await fetch("https://supamart-v-backend.onrender.com/products",{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -66,11 +67,13 @@ function AdminProduct() {
             })
         let res= await respose.json()
         console.log(res)
-        setRefresh(refresh+1)
+        setRefresh(prev=> !prev)
+        setProductIsUploading(false)
         return true
         
         } catch (error) {
             console.log(error)
+            setProductIsUploading(false)
             return false
         }
     }
@@ -108,8 +111,8 @@ function AdminProduct() {
                         alert("Something Went Wrong")
                     }}>
                         <h3 className=" text-2xl font-bold flex pl-4 pt-4">Add New Product</h3>
-                        <div className="flex justify-evenly p-4">
-                            <div className="flex flex-col  w-[48%]">
+                        <div className="flex justify-evenly p-4 max-sm:flex-col">
+                            <div className="flex flex-col  w-[48%] max-sm:w-full">
                                 <div>
                                     <label className="font-bold" htmlFor="">Product Name<span className="text-red-600">*</span></label>
                                 </div>
@@ -143,7 +146,7 @@ function AdminProduct() {
                                 <br />
                             </div>
 
-                            <div className="flex flex-col w-[48%]">
+                            <div className="flex flex-col w-[48%] max-sm:w-full">
                                 <div>
                                     <label className="font-bold" htmlFor="">Brand<span className="text-red-600">*</span></label>
                                 </div>
@@ -204,7 +207,7 @@ function AdminProduct() {
                             <button className=" border border-gray-300 w-[20%] h-10 self-end  hover:bg-cyan-500 hover:text-white hover:scale-105 duration-300 rounded-lg" onClick={()=>{
                                 setAddProductToggle(false)
                             }}>Cancel</button>
-                            <button className=" border border-gray-300 w-[20%] h-10 self-end bg-cyan-500 text-white  hover:bg-white hover:text-black hover:scale-105 duration-300 rounded-lg" type="submit">Add Product</button>
+                            <button className=" border border-gray-300 w-[20%] h-10 self-end bg-cyan-500 text-white  hover:bg-white hover:text-black hover:scale-105 duration-300 rounded-lg max-lg:w-fit" type="submit">Add Product</button>
                         </div>
                     </form>
                 </div>
@@ -222,10 +225,10 @@ function AdminProduct() {
                 }
                 <div className="bg-white w-[93%] pb-6 rounded-2xl flex flex-col items-center">
                     <div className=" border-b-2 border-gray-300 w-[90%] py-4">
-                        <h3 className="text-2xl font-bold ">All Product Listing</h3>
+                        <h3 className="text-2xl font-bold max-lg:text-lg">All Product Listing</h3>
                     </div>
                     <div className="w-[90%] text-center">
-                        <div className="border-b-2 border-gray-300 text-xl opacity-40">
+                        <div className="border-b-2 border-gray-300 text-xl opacity-40 max-lg:text-sm">
                             <div className="h-20 flex justify-between items-center">
                                 <p className=" w-[42%] flex place-items-start pl-4">Product</p>
                                 <p className=" w-[23%]">Product_id</p>
@@ -243,6 +246,7 @@ function AdminProduct() {
                                             <div className="flex justify-center items-center border border-gray-300 h-8 duration-300">
                                                     <button className=" bottom-4 border-x border-gray-300 h-8 px-2 active:bg-cyan-400 active:text-white" onClick={()=>{
                                                         setQuantity(0)
+                                                        setRefresh(prev=> !prev)
                                                     }}>
                                                     <p className="text-red-500 text-4xl relative bottom-2">x</p>
                                                     </button> 
@@ -268,22 +272,23 @@ function AdminProduct() {
                                                         quantity>0&&
                                                         AddQuantity(item,quantity)
                                                         setQuantity(0)
+                                                        setRefresh(prev=> !prev)
                                                     }}>
                                                         <p className="relative bottom-1">✓</p>
                                                     </button>
                                             </div>
                                         </div>
             
-                                        <div  className="h-20 flex justify-between items-center border-b-2 border-gray-400 relative">
-                                            
+                                        <div  className="h-20 flex justify-between items-center border-b-2 border-gray-400 relative max-lg:text-xs max-sm:text-[0.5rem]">
+                                
                                             <div className="flex w-[42%]">
                                                 <div className="w-15 h-15 mr-4">
                                                     <img className="w-15 h-15 object-contain" src={item.image} alt="" />
                                                 </div>
-                                                <p className="w-100 h-12 text-wrap truncate text-left">{item.title}</p>
+                                                <p className="w-100 h-12 text-wrap truncate text-left max-sm:flex max-sm:items-center">{item.title}</p>
                                             </div>
-                                            <p className=" w-[23%]">#{item._id}</p>
-                                            <p className=" w-[13%]">₹{item.price}</p>
+                                            <p className=" w-[23%]  max-sm:truncate">#{item._id}</p>
+                                            <p className=" w-[13%] ">₹{item.price}</p>
                                             <p className=" w-[12%]">{item.quantity}</p>
                                         </div>
                                     </div>

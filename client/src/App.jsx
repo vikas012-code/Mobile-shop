@@ -8,23 +8,20 @@ import { useEffect, useState } from "react"
 import LoginPage from "./components/LoginPage"
 import AdminPanel from "./components/AdminPanel"
 import Cookies from 'js-cookie'
+import ServerError from "./components/ServerError"
 
 
 function App() {
 
-  const [datas ,setDatas]=useState([])
+const [datas ,setDatas]=useState([])
 
-  
-  
-  
-  const [searchItem,setSearchItem]= useState("")
+const [searchItem,setSearchItem]= useState("")
 
-  const [cartItem ,setCartItem]=useState([])
+const [cartItem ,setCartItem]=useState([])
 
-  const [cartQuantity,setCartQuantity]=useState(0)
+const [cartQuantity,setCartQuantity]=useState(0)
 
-  const [total,setTotal]=useState(0)
-
+const [total,setTotal]=useState(0)
   
 const [ProgressBar,setProgressBar]=useState(1)
 
@@ -48,10 +45,6 @@ const [user,setUser]=useState({
 const cookie=Cookies.get("UserAuth")
 
 
-//admin@gmail.com
-//admin
-
-
 useEffect(()=>{
   if(cookie){
     const CookieAuth=JSON.parse(cookie)
@@ -68,9 +61,6 @@ useEffect(()=>{
 }
 ,[Auth])
 
-//admin@gmail.com
-//admin
-
 
 const [ShippingAddress,setShippingAddress]=useState({
   fullName:"",
@@ -84,22 +74,27 @@ const [ShippingAddress,setShippingAddress]=useState({
 })
 
 
+const [serverIsOk,SetServerIsOk]=useState(true)
 
   useEffect(()=>{
-    fetch("http://localhost:8000/products")
+    fetch("https://supamart-v-backend.onrender.com/products")
     .then((res)=> res.json())
-    .then((res)=>setDatas(res))
-    .catch((err)=>{console.log(err)})
+    .then((res)=>{
+      setDatas(res)
+      SetServerIsOk(true)
+    })
+    .catch((err)=>{
+      console.log(err)
+      SetServerIsOk(false)
+    })
   },[Ordered,refresh])
-
-
 
 
 useEffect(() =>{
   //console.log("wishlist calling..")
   if(user._id){
     try {
-      fetch("http://localhost:8000/wishlists/byId",
+      fetch("https://supamart-v-backend.onrender.com/wishlists/byId",
         {
         method: "POST",
         headers: {
@@ -128,11 +123,12 @@ useEffect(() =>{
 },
 [user,WishListItem.length])
 
+
 useEffect(() =>{
   //console.log("order calling..")
   if(user._id){
   try {
-    fetch("http://localhost:8000/orders/byId",
+    fetch("https://supamart-v-backend.onrender.com/orders/byId",
       {
       method: "POST",
       headers: {
@@ -167,36 +163,32 @@ useEffect(()=>{
         }
     },[])
 
-
-
-
+// console.log(datas)
 const value={datas,searchItem,setSearchItem,cartItem ,setCartItem,cartQuantity,setCartQuantity,total,setTotal,ShippingAddress,setShippingAddress,ProgressBar,setProgressBar,
   Auth,setAuth,Ordered,setOrdered,WishListItem,setWishListItem,user,setUser,section,setSection,refresh,setRefresh}
 
-  
 
-  if(user.Email==="admin@gmail.com" && user.Password==="admin"){
+  if(Auth==="admin"){
     return (
         <UserContext.Provider value={value}>
-        <div className={`${Auth===null?" pointer-events-none opacity-60":""}`}>
-        <AdminPanel/>
-        </div>
-        <LoginPage/>
+          <div className={`relative ${Auth===null?" pointer-events-none opacity-60":""}`}>
+            <AdminPanel/>
+          </div>
+          <LoginPage/>
         </UserContext.Provider>
       )
   }
   else{
     return (
         <UserContext.Provider value={value}>
-        <div className={`${Auth===null?" pointer-events-none opacity-60":""}`}>
-          <Navbar/>
-          <Outlet/>
-          <Footer/>
-        </div>
-        <LoginPage/>
+          <div className={`${Auth===null?" pointer-events-none opacity-60":""}`}>
+            <Navbar/>
+            {serverIsOk?<Outlet/>:<ServerError/>}
+            <Footer/>
+          </div>
+          <LoginPage/>
         </UserContext.Provider>
       )
-
   }
 }
 
